@@ -6,6 +6,12 @@
 <!--
 ⚠️ QUY TẮC CHUNK: 1 chunk = 1 audio file = 1 image.
 Image prompt KHÔNG viết trong file này — viết trong image-prompts.md.
+
+⚠️ POV OUTRO — second-person nhạt dần, narrator tiếp quản.
+   Outro kéo người nghe ra khỏi "you" một cách tự nhiên.
+   Pattern: bắt đầu bằng "you" nhìn lại → chuyển dần sang narrator nói về records/history → câu cuối flat, narrator.
+   BAD:  "That is all. Thank you for listening."
+   GOOD: "The records remain. That is enough."
 -->
 
 ---

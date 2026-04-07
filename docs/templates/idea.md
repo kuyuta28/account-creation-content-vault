@@ -34,6 +34,7 @@ tags: []
 
 ## Script Notes
 
+- **POV:** Second-person (`you`). Narrator dẫn dắt, người nghe là nhân vật trải nghiệm.
 - **Tone:**
 - **Pacing:**
 - **Tránh:**

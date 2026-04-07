@@ -15,20 +15,28 @@ Chỉ giữ <!-- img: IMG-XX-XX --> để biết chunk dùng ảnh nào.
 <!--
 ⚠️ WRITING STYLE — bắt buộc kiểm tra trước khi publish:
 
-1. CHUNK OPENINGS — không được mở 2 chunk liên tiếp bằng "The [X] of/in the Ming dynasty was/were..."
-   Thay bằng: đảo chủ ngữ, bắt đầu bằng danh từ chính, hoặc bắt đầu bằng hoàn cảnh/thời gian.
-   BAD:  "The documentation of grain storage... was carried out using a standardized form..."
-   GOOD: "Each granary inspection produced a standardized report form..."
+0. POV — SECOND-PERSON xuyên suốt.
+   Người nghe = "you" = nhân vật trải nghiệm. Narrator dẫn dắt từ bên ngoài.
+   BAD:  "The official walked into the granary and examined the grain."
+   GOOD: "You step inside the granary. The smell of old grain fills the air."
+   BAD:  "Officials were required to report within three days."
+   GOOD: "You have three days to file the report. That is what the code requires."
+   Intro có thể dùng 1–2 câu narrator setup trước khi dẫn vào "you".
 
-2. RHYTHM — chèn 1–2 câu ngắn (8–12 từ) mỗi section để phá monotone.
-   Vị trí tốt: sau khi nêu số liệu cụ thể, sau khi mô tả hậu quả quan trọng.
+1. CHUNK OPENINGS — không mở 2 chunk liên tiếp cùng cấu trúc.
+   Thay bằng: hành động của "you", cảm giác, chi tiết vật lý cụ thể.
+   BAD:  "You are an official. You are responsible for..."
+   GOOD: "The gate opens. You walk through alone."
 
-3. HEDGING — cắt các cụm xác nhận verbose.
-   BAD:  "It is a subject that, according to scholars of Chinese administrative history, has been
-          documented in considerable detail"
+2. RHYTHM — chèn 1–2 câu ngắn (6–10 từ) mỗi section để phá monotone.
+   Vị trí tốt: sau số liệu, sau hậu quả, sau bước ngoặt tình huống.
+
+3. HEDGING — cắt cụm xác nhận verbose.
+   BAD:  "It is a subject that has been documented in considerable detail by scholars"
    GOOD: "It is documented in considerable detail"
 
-4. PARAGRAPH VARIATION — tránh 3+ đoạn liên tiếp cùng cấu trúc "The X was..."
+4. SENSORY DETAIL — mỗi chunk intro nên có ít nhất 1 chi tiết giác quan (âm thanh, mùi, cảm giác).
+   Không cần nhiều — 1 câu đủ để neo người nghe vào bối cảnh.
 -->
 
 ---

@@ -15,27 +15,30 @@ Chỉ giữ <!-- img: IMG-0N-XX --> để biết chunk dùng ảnh nào.
 <!--
 ⚠️ WRITING STYLE — bắt buộc kiểm tra trước khi publish:
 
-1. CHUNK OPENINGS — không được mở 2 chunk liên tiếp bằng "The [X] of/in the Ming dynasty was/were..."
-   Thay bằng: đảo chủ ngữ, bắt đầu bằng danh từ chính, hoặc bắt đầu bằng hoàn cảnh/thời gian.
-   BAD:  "The assessment of grain quality in the Ming dynasty granary system was a procedure of..."
-   GOOD: "Quality classification in the Ming granary system carried direct administrative consequences."
+0. POV — SECOND-PERSON xuyên suốt.
+   Người nghe = "you" = nhân vật đang sống trong tình huống.
+   BAD:  "The official was required to measure the grain using a certified box."
+   GOOD: "You are required to measure the grain. The box must be certified — yours was last checked three years ago."
+   BAD:  "Granary directors were permitted to serve in their home county."
+   GOOD: "You are allowed to stay. Unlike most officials, you may serve in the county where you were born."
+   Thông tin lịch sử vẫn phải truyền đủ — nhưng qua trải nghiệm của "you", không phải qua mô tả khách quan.
 
-2. RHYTHM — chèn 1–2 câu ngắn (8–12 từ) mỗi section để phá monotone.
-   Vị trí tốt: sau khi liệt kê threshold/số liệu cụ thể, sau khi mô tả hậu quả quan trọng.
-   VD: "Each classification carried a different administrative response."
-   VD: "The final threshold admitted no partial exceptions."
-   VD: "The code's provisions on this point were specific."
+1. CHUNK OPENINGS — không mở 2 chunk liên tiếp cùng cấu trúc.
+   Thay bằng: hành động, cảm giác, tình huống cụ thể của "you".
+   BAD:  "You are an inspector. You are tasked with..."
+   GOOD: "The door is locked. You knock twice and wait."
 
-3. HEDGING — cắt các cụm xác nhận không cần thiết.
-   BAD:  "a designation that translates approximately as X, though the precision of this translation
-          is a matter on which scholars have expressed varying opinions"
+2. RHYTHM — chèn 1–2 câu ngắn (6–10 từ) mỗi section.
+   VD: "That is what the code requires."
+   VD: "You have seen this before."
+   VD: "The number does not add up."
+
+3. HEDGING — cắt cụm xác nhận verbose.
+   BAD:  "translated approximately as X, though scholars differ"
    GOOD: "translated as X"
-   BAD:  "It is a subject that, according to scholars of Chinese administrative history, has been
-          documented in considerable detail"
-   GOOD: "It is documented in considerable detail"
 
-4. PARAGRAPH VARIATION — tránh 3+ đoạn liên tiếp bắt đầu bằng cùng 1 cấu trúc (The X was... The Y was... The Z was...)
-   Đảo cấu trúc câu, dùng passive, hoặc bắt đầu bằng prepositional phrase.
+4. PARAGRAPH VARIATION — xoay cấu trúc câu, tránh 3+ đoạn liên tiếp cùng pattern.
+   Dùng: hành động → hậu quả → phản ứng của "you".
 -->
 
 ---
