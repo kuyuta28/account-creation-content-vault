@@ -71,17 +71,35 @@ tags: [ming-dynasty, china, bureaucracy, agriculture, 15th-century]
 - Part 3: tài liệu viết tay, dấu triện đỏ, cảnh kho bị ẩm/hư hại
 
 ### Thumbnail
-- Subject (central image): Cổng kho lúa nhà Minh, kiến trúc truyền thống, sương mù nhẹ buổi sáng
-- Text overlay (title ngắn, ≤6 từ): "Ming Grain Storage Logs"
-- Mood / color palette: deep charcoal, muted terracotta, fog grey
+- Subject (central image): Quan lại nhà Minh mệt mỏi, đội mũ quan phủc, đứng trong kho lúa đối tối, ánh nến đố đổ lên mặt
+- Text overlay: “GRAIN INSPECTION” (top, to, vàng) + “MING DYNASTY, 1450” (bottom, vừa, vàng)
+- Mood / color palette: deep shadow, warm candlelight, dark brown and amber
 
-**Prompt:**
+
+**Prompt 1:**
 ```
-Ancient Chinese Ming dynasty granary exterior, traditional wooden architecture with curved roof tiles, early morning mist, deep charcoal background, dramatic low diffused light, centered composition, classical Chinese painting style with ink wash influence, cinematic atmosphere, muted terracotta and grey tones, 16:9
+A weary Ming dynasty Chinese official in imperial robes and black official hat, standing inside a dimly lit granary warehouse, surrounded by large grain sacks, holding a scroll and brush, candlelight casting warm amber shadows on his face, photorealistic, cinematic lighting, ultra detailed, dramatic chiaroscuro, 16:9, bold serif title text "GRAIN INSPECTION" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "MING DYNASTY, 1450" at the bottom center in gold #D4A017
+```
+**Prompt 2:**
+```
+Close-up overhead view of a Ming dynasty wooden desk covered in rice paper inspection ledgers and ink brush, an official's ink-stained hand resting on an open scroll listing grain tallies in classical Chinese characters, a flickering oil lamp at the corner, dark aged wood texture, photorealistic, cinematic macro lighting, ultra detailed, dramatic chiaroscuro, 16:9, bold serif title text "GRAIN INSPECTION" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "MING DYNASTY, 1450" at the bottom center in gold #D4A017
+```
+**Prompt 3:**
+```
+Wide atmospheric interior shot of a vast Ming dynasty imperial granary, massive wooden pillars receding into darkness, hundreds of grain storage urns and sacks stacked in rows under a high timber roof, a lone official holding a lantern walking down the central aisle, warm amber lantern glow against cold deep shadows, volumetric dust in the air, photorealistic, cinematic, ultra detailed, 16:9, bold serif title text "GRAIN INSPECTION" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "MING DYNASTY, 1450" at the bottom center in gold #D4A017
 ```
 
-<!-- Sau khi gen ảnh: thêm text overlay trong Canva/Photoshop -->
-<!-- Font: Playfair Display, màu #E8E0D0, bottom-center, padding 5% -->
+---
+
+## YouTube Description
+
+```
+Ming Dynasty Grain Storage Inspection Logs, 1450
+
+In the first year of the Jingtai reign period, the Ministry of Revenue issued the forty-third revision of granary inspection protocols to administrative facilities across the empire.
+
+This recording covers the grain storage inspection system of the Ming dynasty as it existed in 1450 — the administrative hierarchy, measurement procedures, quality classification criteria, incident documentation, and accountability mechanisms applied to approximately 230 major granary facilities.
+```
 
 ---
 

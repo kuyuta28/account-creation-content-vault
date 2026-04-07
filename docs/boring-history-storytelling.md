@@ -26,7 +26,7 @@ một chủ đề mà, theo nhiều học giả, đã được ghi chép lại m
 ```
 
 Ví dụ tốt:
-> "Vào ngày mười bốn tháng Ba, năm một trăm sáu mươi bảy trước Công nguyên, Thượng viện La Mã đã họp phiên thường kỳ lúc bình minh, theo đúng thủ tục đã được thực hiện trong suốt ba trăm năm trước đó, với một số thay đổi nhỏ về trình tự phát biểu được áp dụng từ năm một trăm tám mươi hai."
+> "Vào ngày mười bốn tháng Ba, năm một trăm sáu mươi bảy trước Công nguyên, bạn ngồi trong phòng họp của Thượng viện La Mã khi phiên họp thường kỳ bắt đầu lúc bình minh, theo đúng thủ tục đã được thực hiện trong suốt ba trăm năm trước đó, với một số thay đổi nhỏ về trình tự phát biểu được áp dụng từ năm một trăm tám mươi hai."
 
 Tránh:
 - "Hãy tưởng tượng bạn đang ở..."
@@ -62,8 +62,8 @@ Và sau khi đưa ra số, đừng phân tích — chỉ tiếp tục.
 #### C. Passive voice + nominalization
 Mọi động từ mạnh đều chuyển thành danh từ. Chủ thể hành động bị xóa hoặc đẩy ra sau.
 
-Tránh: "Cato cho rằng mức phân bổ này quá cao."
-Dùng: "Mức phân bổ này được đánh giá là không phù hợp bởi một số thượng nghị sĩ, trong đó có những người đã bày tỏ quan điểm tương tự tại các phiên họp trong hai năm trước."
+Tránh: "Bạn nghe Cato nói rằng mức phân bổ này quá cao."
+Dùng: "Mức phân bổ này được đánh giá là không phù hợp bởi một số thượng nghị sĩ, trong đó có những người đã bày tỏ quan điểm tương tự tại các phiên họp trong hai năm trước. Bạn ghi nhận điều đó."
 
 #### D. Callback "như đã đề cập"
 Thỉnh thoảng nhắc lại một chi tiết từ phần trước, y như lần đầu. Tạo cảm giác vòng tròn, đi mãi không đến đâu — rất có lợi cho giấc ngủ.
@@ -143,5 +143,5 @@ Ví dụ chủ đề tốt:
 **❌ Không phải boring-history:**
 > "Cuộc tranh luận nảy lửa tại Thượng viện đã phơi bày sự chia rẽ sâu sắc trong lòng nước cộng hòa. Cato đứng dậy, giọng đầy phẫn nộ, và tuyên bố rằng mức phân bổ này là sự sỉ nhục với người dân Rome."
 
-**✓ Boring-history đúng:**
-> "Tại phiên họp kế tiếp, vấn đề phân bổ ngũ cốc từ tỉnh Sicilia được đưa ra thảo luận lần thứ ba trong năm đó. Mức đề xuất là hai trăm bảy mươi nghìn modii, một con số được xác định dựa trên báo cáo của thống đốc tỉnh, vốn đã được nộp vào tháng trước với một số chú thích về điều kiện thời tiết. Quan điểm của một số thượng nghị sĩ là mức này cần được xem xét lại. Quan điểm này đã được ghi vào biên bản."
+**✓ Boring-history đúng (second-person):**
+> "Tại phiên họp kế tiếp, bạn ngồi nghe vấn đề phân bổ ngũ cốc từ tỉnh Sicilia được đưa ra thảo luận lần thứ ba trong năm đó. Mức đề xuất là hai trăm bảy mươi nghìn modii, một con số được xác định dựa trên báo cáo của thống đốc tỉnh, vốn đã được nộp vào tháng trước với một số chú thích về điều kiện thời tiết. Một số thượng nghị sĩ cho rằng mức này cần được xem xét lại. Bạn ghi quan điểm đó vào biên bản."

@@ -69,17 +69,49 @@ tags: []
 
 ### Thumbnail
 - Subject (central image):
-- Text overlay (title ngắn, ≤6 từ):
+- Text overlay: [TOP TEXT] (top, bold, gold) + [BOTTOM TEXT] (bottom, smaller, gold)
 - Mood / color palette:
 
-**Prompt:**
+
+**Lưu ý:** Luôn tạo 3 prompt thumbnail khác nhau để chọn. Viết thẳng toàn bộ yêu cầu vào từng prompt — KHÔNG dùng Canva/Photoshop.
+
+**Prompt 1:**
 ```
-[SUBJECT_PROMPT], deep navy background, dramatic low light, centered composition, photorealistic oil painting style, cinematic atmosphere, muted earth tones, no people faces, no text in image, 16:9 --ar 16:9 --no watermark
+[SUBJECT], photorealistic, cinematic lighting, ultra detailed, dramatic chiaroscuro, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
+```
+**Prompt 2:**
+```
+[SUBJECT] viewed from a low angle looking up, [SETTING], dramatic top-down raking light, deep shadows, muted [COLOR] tones, photorealistic, cinematic, ultra detailed, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
+```
+**Prompt 3:**
+```
+Wide atmospheric shot of [SETTING], [SUBJECT] as a small silhouette in the foreground, volumetric haze, [LIGHTING] casting long shadows, painterly realism, muted desaturated palette with warm [COLOR] accent, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
 ```
 
-<!-- Sau khi gen ảnh: thêm text overlay trong Canva/Photoshop -->
-<!-- Font gợi ý: serif (Georgia, Playfair Display), màu trắng nhạt hoặc gold, opacity 90% -->
-<!-- Text đặt ở: bottom-left hoặc center, không che subject chính -->
+
+---
+
+## YouTube Description
+
+```
+[TITLE]
+
+[1–2 câu đặt bối cảnh. Flat, không hype. Không câu hỏi tu từ.]
+
+This recording covers [chủ đề] — [liệt kê ngắn các phần nội dung].
+
+Duration: approximately X hours Y minutes. Narrated at a slow pace. No background music.
+
+---
+
+00:00 Intro
+XX:XX Part 1 — [title]
+XX:XX Part 2 — [title]
+XX:XX Part 3 — [title]
+XX:XX Outro
+```
+
+<!-- Điền timestamp thực sau khi video assembled -->
 
 ---
 
