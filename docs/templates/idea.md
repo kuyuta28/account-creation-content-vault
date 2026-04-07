@@ -73,17 +73,25 @@ tags: []
 - Mood / color palette:
 
 
-**Lưu ý:** Luôn tạo 3 prompt thumbnail khác nhau để chọn. Viết thẳng toàn bộ yêu cầu vào từng prompt — KHÔNG dùng Canva/Photoshop.
+**Lưu ý — BẮT BUỘC để A/B test hiệu quả:**
+- 3 prompt phải khác nhau về **composition** (close-up nhân vật / macro object / wide shot)
+- 3 title phải khác nhau về **angle** (archival SEO / number hook / character hook) — KHÔNG chỉ đổi dấu ngăn cách
+- 3 text overlay trên ảnh phải khác nhau (test copy song song với visual)
+- Mục tiêu: sau khi upload, có thể swap thumbnail để test CTR — 3 cái giống nhau = không test được gì
+- KHÔNG dùng Canva/Photoshop — viết thẳng toàn bộ yêu cầu vào prompt
 
-**Prompt 1:**
+**Prompt 1** — *[mô tả hook: ví dụ: nhân vật / cảm xúc]*
+- Title: `[MAIN TITLE, YEAR]` ← archival SEO, dài, đúng keyword
 ```
 [SUBJECT], photorealistic, cinematic lighting, ultra detailed, dramatic chiaroscuro, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
 ```
-**Prompt 2:**
+**Prompt 2** — *[mô tả hook: ví dụ: data / number / curiosity]*
+- Title: `[NUMBER or DETAIL]: [TOPIC], [YEAR]` ← number-led hook, con số đứng đầu
 ```
 [SUBJECT] viewed from a low angle looking up, [SETTING], dramatic top-down raking light, deep shadows, muted [COLOR] tones, photorealistic, cinematic, ultra detailed, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
 ```
-**Prompt 3:**
+**Prompt 3** — *[mô tả hook: ví dụ: quy mô / character / atmosphere]*
+- Title: `The [ROLE/CHARACTER]: [TOPIC], [YEAR]` ← character hook, nhân vật hóa chủ đề
 ```
 Wide atmospheric shot of [SETTING], [SUBJECT] as a small silhouette in the foreground, volumetric haze, [LIGHTING] casting long shadows, painterly realism, muted desaturated palette with warm [COLOR] accent, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
 ```
@@ -109,6 +117,8 @@ XX:XX Part 1 — [title]
 XX:XX Part 2 — [title]
 XX:XX Part 3 — [title]
 XX:XX Outro
+
+#SleepStories #BoringHistory #[TopicHashtag]
 ```
 
 <!-- Điền timestamp thực sau khi video assembled -->
