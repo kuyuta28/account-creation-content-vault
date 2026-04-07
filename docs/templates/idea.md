@@ -60,11 +60,6 @@ tags: []
 - Gen script: `tools/gen_audio.py`
 - Ghi chú đặc biệt:
 
-### Music nền
-- Mood:
-- BPM range:
-- Ghi chú:
-
 ### Visuals — ý tưởng sơ bộ
 <!-- Liệt kê loại ảnh cần theo từng phần — không cần prompt chi tiết ở đây, chi tiết sẽ trong script.md -->
 - Intro:

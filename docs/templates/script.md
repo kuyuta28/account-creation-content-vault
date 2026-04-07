@@ -14,11 +14,12 @@ created: YYYY-MM-DD
 
 <!--
 CHUNK REFERENCE:
-  ~500 từ @ onyx speed 0.85 ≈ ~127 wpm ≈ ~3:56/chunk
+  ~500 từ @ Graham speed 0.85 ≈ ~127 wpm ≈ ~3:56/chunk
   ~320 từ (intro/outro chunk) ≈ ~2:30
-  Đặt tên file: audio-{section}-{chunk}.mp3  (e.g. audio-01-03.mp3)
+  Đặt tên file: XX-XX.mp3  (e.g. 01-03.mp3 = section 1, chunk 3)
   Lưu vào: assets/audio/
-  Ảnh: ~1 ảnh/90 giây → chunk 500 từ ≈ 2–3 ảnh
+  Ảnh: 1 ảnh/chunk, lưu vào assets/images/XX-XX.png
+  Clips: gen_clips.py merge image+audio → assets/clips/XX-XX.mp4
 -->
 
 ## Sections

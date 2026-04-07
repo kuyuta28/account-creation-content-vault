@@ -14,10 +14,11 @@
 
 <!--
 ASSEMBLY INSTRUCTIONS:
-  1. Concatenate all audio files in sequence — no gap between chunks
-  2. Music: fade in 0:00–0:05 at full level, then drop to -16dB under voiceover
-  3. Each image: slow zoom 100%→108% across its full display duration
-  4. Transition between images: 0.3s crossfade
-  5. End card: last audio end → +2:00, music fade out over 60 seconds
-  6. Export: 1920×1080, 30fps, H.264, AAC 192kbps → exports/final.mp4
+  1. Gen clips: `python tools/gen_clips.py`
+     → Merge mỗi image+audio pair → assets/clips/XX-XX.mp4 (duration = audio length)
+  2. Import toàn bộ clips vào CapCut, stack theo thứ tự
+  3. Effects: vignette + Ken Burns slow zoom (100%→108%) per clip
+  4. Transition between clips: 0.3s crossfade
+  5. Export: 1920×1080, 30fps, H.264, AAC 192kbps → exports/final.mp4
+  Note: không thêm nhạc nền — voice-only là chuẩn cho sleep history format
 -->
