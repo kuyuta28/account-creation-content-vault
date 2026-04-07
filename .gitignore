@@ -1,0 +1,54 @@
+# ===== MEDIA FILES (large binaries — per episode) =====
+episodes/**/assets/images/
+episodes/**/assets/audio/
+episodes/**/assets/music/
+episodes/**/exports/
+
+# Loose media files nếu lỡ để lung tung
+*.mp4
+*.mp3
+*.wav
+*.ogg
+*.aac
+*.flac
+*.mov
+*.avi
+*.mkv
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.psd
+*.ai
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Editor =====
+.vscode/
+.idea/
+*.swp
+*~
+
+# ===== Python (nếu sau dùng scripts) =====
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# ===== Node (nếu sau dùng Remotion) =====
+node_modules/
+dist/
+.next/
+
+# ===== Secrets =====
+.env
+.env.*
+secrets/
+*.key

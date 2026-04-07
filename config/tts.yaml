@@ -1,0 +1,31 @@
+# TTS Generation Config
+# Used by tools/gen_audio.py
+# CLI flags always override these values
+
+api:
+  url: https://api.inworld.ai/tts/v1/voice
+  key_env: M2xRcVZ1SnNqYXg4NFFMRTRYTndSZm43RHVXQjRUVTI6YW00d1J6alhhemVaVDdCc3kxcEZncllCVTI0TmZXTE84OWNVRmFpRGQzTTZjUFBITGRFaXZwVWY3cGpPWTNuNg==          # env var name holding the API key
+
+model:
+  id: inworld-tts-1.5-max           # inworld-tts-1.5-max | inworld-tts-1.5-mini
+
+voice:
+  id: Graham
+  speed: 0.85                       # 0.5 – 1.5
+  temperature: 0.9                  # 0.0 – 2.0
+
+generation:
+  workers: 4                        # parallel threads
+  max_chars_per_request: 1900       # Inworld API limit is 2000; keep buffer
+
+output:
+  audio_encoding: MP3
+  sample_rate_hertz: 44100
+
+script:
+  section_files:
+    - 00-intro.md
+    - 01-structure.md
+    - 02-quality.md
+    - 03-incidents.md
+    - 04-outro.md
