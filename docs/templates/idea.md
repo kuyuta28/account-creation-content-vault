@@ -82,18 +82,21 @@ tags: []
 
 **Prompt 1** — *[mô tả hook: ví dụ: nhân vật / cảm xúc]*
 - Title: `[MAIN TITLE, YEAR]` ← archival SEO, dài, đúng keyword
+- Text overlay: "[LINE 1] / [LINE 2]" (center, 2 dòng, chữ to)
 ```
-[SUBJECT], photorealistic, cinematic lighting, ultra detailed, dramatic chiaroscuro, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
+[SUBJECT], photorealistic, cinematic lighting, ultra detailed, dramatic chiaroscuro, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "[LINE 1]" on the first line and "[LINE 2]" on the second line, both with heavy drop shadow
 ```
 **Prompt 2** — *[mô tả hook: ví dụ: data / number / curiosity]*
 - Title: `[NUMBER or DETAIL]: [TOPIC], [YEAR]` ← number-led hook, con số đứng đầu
+- Text overlay: "[LINE 1] / [LINE 2]" (center, 2 dòng, chữ to)
 ```
-[SUBJECT] viewed from a low angle looking up, [SETTING], dramatic top-down raking light, deep shadows, muted [COLOR] tones, photorealistic, cinematic, ultra detailed, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
+[SUBJECT] viewed from overhead or low angle, [SETTING], dramatic raking light, deep shadows, muted [COLOR] tones, photorealistic, cinematic, ultra detailed, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "[LINE 1]" on the first line and "[LINE 2]" on the second line, both with heavy drop shadow
 ```
 **Prompt 3** — *[mô tả hook: ví dụ: quy mô / character / atmosphere]*
 - Title: `The [ROLE/CHARACTER]: [TOPIC], [YEAR]` ← character hook, nhân vật hóa chủ đề
+- Text overlay: "[LINE 1] / [LINE 2]" (center, 2 dòng, chữ to)
 ```
-Wide atmospheric shot of [SETTING], [SUBJECT] as a small silhouette in the foreground, volumetric haze, [LIGHTING] casting long shadows, painterly realism, muted desaturated palette with warm [COLOR] accent, 16:9, bold serif title text "[TOP TEXT]" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "[BOTTOM TEXT]" at the bottom center in gold #D4A017
+Wide atmospheric shot of [SETTING], [SUBJECT] as a small silhouette in the foreground, volumetric haze, [LIGHTING] casting long shadows, painterly realism, muted desaturated palette with warm [COLOR] accent, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "[LINE 1]" on the first line and "[LINE 2]" on the second line, both with heavy drop shadow
 ```
 
 

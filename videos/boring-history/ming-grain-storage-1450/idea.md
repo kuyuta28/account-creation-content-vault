@@ -78,23 +78,23 @@ tags: [ming-dynasty, china, bureaucracy, agriculture, 15th-century]
 
 **Prompt 1** — *hook: nhân vật, cảm xúc mệt mỏi*
 - Title: `Ming Dynasty Grain Storage Inspection Logs, 1450`
-- Text overlay: "GRAIN INSPECTION" (top) + "MING DYNASTY, 1450" (bottom)
+- Text overlay: "GRAIN INSPECTION / MING DYNASTY 1450" (center, 2 dòng, chữ to)
 ```
-A weary Ming dynasty Chinese official in imperial robes and black official hat, extreme close-up on his tired face, candlelight casting warm amber shadows on weathered skin, dimly lit granary background out of focus, photorealistic, cinematic portrait lighting, ultra detailed, dramatic chiaroscuro, 16:9, bold serif title text "GRAIN INSPECTION" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "MING DYNASTY, 1450" at the bottom center in gold #D4A017
+A weary Ming dynasty Chinese official in imperial robes and black official hat, extreme close-up on his tired face, candlelight casting warm amber shadows on weathered skin, dimly lit granary background out of focus, photorealistic, cinematic portrait lighting, ultra detailed, dramatic chiaroscuro, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "GRAIN INSPECTION" on the first line and "MING DYNASTY 1450" on the second line, both with heavy drop shadow
 ```
 
 **Prompt 2** — *hook: data, tò mò "có gì trong đó"*
 - Title: `230 Granaries: Ming Dynasty Grain Storage Records, 1450`
-- Text overlay: "230 GRANARIES" (top) + "ONE EMPIRE · 1450" (bottom)
+- Text overlay: "230 GRANARIES / ONE EMPIRE 1450" (center, 2 dòng, chữ to)
 ```
-Close-up overhead view of a Ming dynasty wooden desk covered in rice paper inspection ledgers, an official's ink-stained hand resting on an open scroll with dense columns of classical Chinese numerals and grain tallies, a flickering oil lamp casting warm light at the corner, dark aged wood texture, photorealistic, cinematic macro lighting, ultra detailed, dramatic chiaroscuro, 16:9, bold serif title text "230 GRANARIES" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "ONE EMPIRE · 1450" at the bottom center in gold #D4A017
+Close-up overhead view of a Ming dynasty wooden desk covered in rice paper inspection ledgers, an official's ink-stained hand resting on an open scroll with dense columns of classical Chinese numerals and grain tallies, a flickering oil lamp casting warm light at the corner, dark aged wood texture, photorealistic, cinematic macro lighting, ultra detailed, dramatic chiaroscuro, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "230 GRANARIES" on the first line and "ONE EMPIRE 1450" on the second line, both with heavy drop shadow
 ```
 
 **Prompt 3** — *hook: quy mô, cảm giác nhỏ bé trước hệ thống*
 - Title: `The Grain Inspector: Ming Dynasty Bureaucratic Records, 1450`
-- Text overlay: "THE INSPECTION LOGS" (top) + "MING CHINA, 1450" (bottom)
+- Text overlay: "THE INSPECTION LOGS / MING CHINA 1450" (center, 2 dòng, chữ to)
 ```
-Wide atmospheric interior shot of a vast Ming dynasty imperial granary, massive wooden pillars receding into darkness, hundreds of grain storage urns and sacks stacked in endless rows under a high timber roof, a lone official as a tiny silhouette holding a lantern far down the central aisle, warm amber lantern glow swallowed by cold deep shadows, volumetric dust in the air, photorealistic, cinematic, ultra detailed, 16:9, bold serif title text "THE INSPECTION LOGS" at the top center in large gold letters #D4A017 with drop shadow, smaller serif text "MING CHINA, 1450" at the bottom center in gold #D4A017
+Wide atmospheric interior shot of a vast Ming dynasty imperial granary, massive wooden pillars receding into darkness, hundreds of grain storage urns and sacks stacked in endless rows under a high timber roof, a lone official as a tiny silhouette holding a lantern far down the central aisle, warm amber lantern glow swallowed by cold deep shadows, volumetric dust in the air, photorealistic, cinematic, ultra detailed, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "THE INSPECTION LOGS" on the first line and "MING CHINA 1450" on the second line, both with heavy drop shadow
 ```
 
 ---
