@@ -69,34 +69,30 @@ tags: []
 
 ### Thumbnail
 - Subject (central image):
-- Text overlay: [TOP TEXT] (top, bold, gold) + [BOTTOM TEXT] (bottom, smaller, gold)
 - Mood / color palette:
 
 
 **Lưu ý — BẮT BUỘC để A/B test hiệu quả:**
 - 3 prompt phải khác nhau về **composition** (close-up nhân vật / macro object / wide shot)
 - 3 title phải khác nhau về **angle** (archival SEO / number hook / character hook) — KHÔNG chỉ đổi dấu ngăn cách
-- 3 text overlay trên ảnh phải khác nhau (test copy song song với visual)
 - Mục tiêu: sau khi upload, có thể swap thumbnail để test CTR — 3 cái giống nhau = không test được gì
 - KHÔNG dùng Canva/Photoshop — viết thẳng toàn bộ yêu cầu vào prompt
+- Text cố định: Prompt 1 & 2 chỉ có chữ **"HISTORY FOR SLEEP"**, Prompt 3 chỉ có chữ **"BORING HISTORY FOR SLEEP"**
 
 **Prompt 1** — *[mô tả hook: ví dụ: nhân vật / cảm xúc]*
 - Title: `[MAIN TITLE, YEAR]` ← archival SEO, dài, đúng keyword
-- Text overlay: "[LINE 1] / [LINE 2]" (center, 2 dòng, chữ to)
 ```
-[SUBJECT], photorealistic, cinematic lighting, ultra detailed, dramatic chiaroscuro, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "[LINE 1]" on the first line and "[LINE 2]" on the second line, both with heavy drop shadow
+[SUBJECT], photorealistic, cinematic lighting, ultra detailed, dramatic chiaroscuro, 16:9, one line of bold serif title text centered near the bottom of the frame: large gold letters #D4A017 "HISTORY FOR SLEEP", heavy drop shadow, no other text in image
 ```
 **Prompt 2** — *[mô tả hook: ví dụ: data / number / curiosity]*
 - Title: `[NUMBER or DETAIL]: [TOPIC], [YEAR]` ← number-led hook, con số đứng đầu
-- Text overlay: "[LINE 1] / [LINE 2]" (center, 2 dòng, chữ to)
 ```
-[SUBJECT] viewed from overhead or low angle, [SETTING], dramatic raking light, deep shadows, muted [COLOR] tones, photorealistic, cinematic, ultra detailed, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "[LINE 1]" on the first line and "[LINE 2]" on the second line, both with heavy drop shadow
+[SUBJECT] viewed from overhead or low angle, [SETTING], dramatic raking light, deep shadows, muted [COLOR] tones, photorealistic, cinematic, ultra detailed, 16:9, one line of bold serif title text centered near the bottom of the frame: large gold letters #D4A017 "HISTORY FOR SLEEP", heavy drop shadow, no other text in image
 ```
 **Prompt 3** — *[mô tả hook: ví dụ: quy mô / character / atmosphere]*
 - Title: `The [ROLE/CHARACTER]: [TOPIC], [YEAR]` ← character hook, nhân vật hóa chủ đề
-- Text overlay: "[LINE 1] / [LINE 2]" (center, 2 dòng, chữ to)
 ```
-Wide atmospheric shot of [SETTING], [SUBJECT] as a small silhouette in the foreground, volumetric haze, [LIGHTING] casting long shadows, painterly realism, muted desaturated palette with warm [COLOR] accent, 16:9, two lines of bold serif title text centered in frame: large gold letters #D4A017 "[LINE 1]" on the first line and "[LINE 2]" on the second line, both with heavy drop shadow
+Wide atmospheric shot of [SETTING], [SUBJECT] as a small silhouette in the foreground, volumetric haze, [LIGHTING] casting long shadows, painterly realism, muted desaturated palette with warm [COLOR] accent, 16:9, one line of bold serif title text centered near the bottom of the frame: large gold letters #D4A017 "BORING HISTORY FOR SLEEP", heavy drop shadow, no other text in image
 ```
 
 
