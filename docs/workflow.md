@@ -5,7 +5,7 @@
 ```
 [1] IDEA       idea.md      Angle, hook, outline, sources, asset requirements
      ↓
-[2] SCRIPT     script.md    Narration đầy đủ + image prompts + timing map
+[2] SCRIPT     script.md    Narration đầy đủ (VĂN NÓI, không phải văn viết) + image prompts + timing map
      ↓
 [3] TTS                     Generate audio từ script
      ↓
@@ -72,9 +72,9 @@ Script tách thành nhiều file — mỗi section 1 file. `script.md` là index
 | `script/00-intro.md` | Narration intro + image prompts |
 | `script/01-section.md` | Narration section 1 + image prompts |
 | `script/02-section.md` | Narration section 2 + image prompts |
-| `script/03-section.md` | Narration section 3 + image prompts |
-| `script/04-outro.md` | Narration outro + image prompts |
-| `script/image-prompts.md` | Master list tất cả prompts để gen hàng loạt |
+| `script/03-section.md` | Narration section 3 |
+| `script/04-outro.md` | Narration outro |
+| `script/image-prompts.md` | **Source of truth** — toàn bộ image prompts |
 | `script/audio-image-map.md` | Bảng timing 31 dòng + assembly instructions |
 
 **Cấu trúc mỗi section file:**
@@ -83,12 +83,9 @@ Script tách thành nhiều file — mỗi section 1 file. `script.md` là index
 <!-- img: IMG-0N-01, IMG-0N-02 -->
 
 [Nội dung nói — văn xuôi đầy đủ, tối đa 500 từ]
-
----image-prompts---
-IMG-0N-01: [style], [subject], [setting], [lighting/mood].
-IMG-0N-02: [style], [subject], [setting], [lighting/mood].
----end-prompts---
 ```
+
+> Image prompts KHÔNG viết trong section files. Chỉ viết trong `image-prompts.md`.
 
 **Quy tắc chunk:**
 - Tối đa ~500 từ/chunk → ~3:56 audio (onyx @ 0.85 = ~127 wpm)
@@ -97,11 +94,35 @@ IMG-0N-02: [style], [subject], [setting], [lighting/mood].
 - KHÔNG đọc `<!-- comment -->` vào TTS
 
 **Quy tắc image prompt:**
-- Bắt đầu bằng style rõ: `Classical Chinese ink wash painting,` / `19th century engraving,`
-- Subject + action + setting + lighting/mood — 1 câu hoặc 2 câu ngắn
+
+**① Visual anchor — BẮT BUỘC nhất quán toàn episode**
+Mỗi episode phải định nghĩa 1 **visual anchor** trong `image-prompts.md` — chuỗi cố định xuất hiện ở ĐẦU MỖI prompt, đảm bảo tất cả ảnh trông cùng 1 câu chuyện:
+```
+[STYLE], [LIGHTING_MOOD], [COLOR_PALETTE]
+```
+Ví dụ (boring-history / Roman):
+```
+19th century engraving, dramatic low candlelight, muted earth tones,
+```
+- **STYLE** — kỹ thuật vẽ/render: `19th century engraving` / `classical oil painting` / `ink wash painting`
+- **LIGHTING_MOOD** — ánh sáng + cảm xúc: `dramatic low candlelight` / `soft golden hour light` / `cold overcast daylight`
+- **COLOR_PALETTE** — tông màu: `muted earth tones` / `deep navy and ochre` / `monochrome sepia`
+
+Visual anchor được đặt trong frontmatter của `image-prompts.md`:
+```markdown
+<!-- visual-anchor: 19th century engraving, dramatic low candlelight, muted earth tones, -->
+```
+Mỗi prompt = `{visual_anchor} {subject}, {action}, {setting}.`
+
+**② Cấu trúc từng prompt**
+- Visual anchor (cố định) + Subject + action + setting — 1–2 câu ngắn
 - Không bullet, không text trong ảnh
 
-**Số ảnh:** ~1 ảnh/90 giây → chunk 500 từ (~3:56) ≈ 2–3 ảnh
+**③ Độ dài: 200–299 ký tự** — AA server giới hạn cứng 300, dưới 200 thiếu chi tiết
+  - Đếm ký tự trước khi lưu: `len("prompt text")` phải trong khoảng [200, 299]
+  - Nếu quá 299: bỏ tính từ thừa, rút gọn noun phrase (vd. "a stone milestone standing nearby" → "a milestone nearby")
+  - Nếu dưới 200: thêm góc quay, detail subject, hoặc background element
+
 
 ---
 
@@ -109,12 +130,33 @@ IMG-0N-02: [style], [subject], [setting], [lighting/mood].
 
 | Việc | Chi tiết |
 |------|---------|
-| Tool | OpenAI TTS |
+| Tool | `tools/gen_audio.py` via tts-proxy |
 | Copy source | Narration text từng chunk trong `script/0N-section.md` (bỏ `<!-- -->`, image prompts) |
-| Đặt tên file | `audio-{section}-{chunk}.mp3` — ví dụ `audio-01-03.mp3` |
+| Đặt tên file | `audio-{section}-{chunk}.wav` — ví dụ `audio-01-03.wav` |
 | Lưu vào | `assets/audio/` |
-| Settings mặc định | voice: onyx, speed: 0.85 (override theo `idea.md`) |
-| Rate thực tế | ~127 wpm → ~500 từ ≈ 3:56 | ~320 từ ≈ 2:30 |
+| Settings mặc định | voice: Charon, speed: 0.95 (override theo `idea.md`) |
+| Rate thực tế | ~127 wpm → ~500 words ≈ 3:56 | ~320 words ≈ 2:30 |
+
+**⚠️ REQUIRED: `config/tts.yaml` per episode**
+
+`gen_audio.py` reads `section_files` from the episode's `config/tts.yaml`. If this file is missing or section names differ from the default, no chunks will be parsed.
+
+Always create `config/tts.yaml` when creating a new episode:
+
+```yaml
+script:
+  section_files:
+    - 00-intro.md
+    - 01-your-section-name.md   # match actual filenames in script/
+    - 02-your-section-name.md
+    - 03-your-section-name.md
+    - 04-your-section-name.md
+    - 05-your-section-name.md   # add/remove as needed
+    - 06-outro.md
+```
+
+Run before first gen: `python tools/gen_audio.py --project <path> --dry-run`
+→ should list all chunks. If 0 chunks found, check `config/tts.yaml` section_files.
 
 ---
 
@@ -202,9 +244,3 @@ centered composition, classical oil painting style, cinematic atmosphere,
 muted earth tones, no text, no watermark, 16:9
 ```
 
-**Text overlay (làm trong Canva / Photoshop sau khi gen ảnh):**
-- Font: Playfair Display hoặc Georgia (serif)
-- Màu: `#E8E0D0` (trắng kem) hoặc `#C9A84C` (gold)
-- Size: đủ đọc ở thumbnail nhỏ (300px)
-- Vị trí: bottom-center hoặc bottom-left, padding 5%
-- Không shadow đậm — dùng subtle drop shadow hoặc text outline nhẹ

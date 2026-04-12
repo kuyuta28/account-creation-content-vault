@@ -2,6 +2,8 @@
 
 > Đây là kim chỉ nam cho mọi video của channel. Đọc một lần, giữ trong đầu khi viết script.
 
+⚠️ **Script là VĂN NÓI, không phải văn viết.** Mọi câu trong script sẽ được đọc thành lời bởi TTS (AI voice) và người nghe tiếp nhận hoàn toàn bằng tai. Không ai đọc bằng mắt. Viết như đang kể chuyện cho một người nghe, không phải viết bài báo hay tài liệu.
+
 ---
 
 ## Công thức cốt lõi
@@ -136,6 +138,21 @@ Ví dụ chủ đề tốt:
 - Medieval guild regulations về chiều rộng vải
 - Các cuộc khảo sát địa chính của British India
 
+### Chủ đề TRÁNH (topic blacklist)
+
+Người nghe đang cố ngủ — bất kỳ thứ gì trigger cảm xúc mạnh sẽ kéo họ tỉnh lại.
+
+| Tránh | Lý do |
+|-------|-------|
+| Chiến tranh, bạo lực, tra tấn | Hình ảnh bạo lực trigger adrenaline |
+| Nô lệ, diệt chủng, thảm sát | Gây khó chịu, không thể ngủ |
+| Tôn giáo, chính trị hiện đại | Trigger ý kiến cá nhân, não bận tranh luận |
+| Tình dục | Không phù hợp ngữ cảnh ngủ |
+| Côn trùng, bệnh dịch chi tiết | Gây ghê sợ, khó chịu thể chất |
+| Tai nạn, thảm họa có nạn nhân cụ thể | Gây đồng cảm quá mạnh → tỉnh giấc |
+
+**Nếu chủ đề lịch sử có yếu tố trên** (ví dụ: logistics quân đội La Mã) → tập trung vào **thủ tục hành chính** xung quanh nó (ngân sách, vận chuyển, giấy tờ), không mô tả trực tiếp bạo lực hay đau khổ.
+
 ---
 
 ## Ví dụ đoạn văn — before/after
@@ -145,3 +162,50 @@ Ví dụ chủ đề tốt:
 
 **✓ Boring-history đúng (second-person):**
 > "Tại phiên họp kế tiếp, bạn ngồi nghe vấn đề phân bổ ngũ cốc từ tỉnh Sicilia được đưa ra thảo luận lần thứ ba trong năm đó. Mức đề xuất là hai trăm bảy mươi nghìn modii, một con số được xác định dựa trên báo cáo của thống đốc tỉnh, vốn đã được nộp vào tháng trước với một số chú thích về điều kiện thời tiết. Một số thượng nghị sĩ cho rằng mức này cần được xem xét lại. Bạn ghi quan điểm đó vào biên bản."
+
+---
+
+## Viết cho TTS — bù đắp sự thiếu warmth của AI voice
+
+TTS không có cảm xúc thật. Người nghe chấp nhận AI voice khi giọng đọc phù hợp ngữ cảnh — nhưng nếu văn bản quá lạnh + giọng đọc lạnh = creepy, không phải soothing.
+
+Cơ chế sleep content hoạt động: người nghe cần **trust** người nói đủ để buông bỏ kiểm soát và ngủ. Second-person POV ("you") tạo kết nối — nhưng cách viết phải hỗ trợ thêm.
+
+### Nguyên tắc
+
+| Quy tắc | Ví dụ |
+|---------|-------|
+| Câu mở chunk dùng hành động/cảm giác vật lý của "you" | "You step inside. The air is cooler here." |
+| Mỗi chunk có ít nhất 1 chi tiết giác quan (âm thanh, mùi, nhiệt độ, ánh sáng) | "The smell of old grain. The hum of insects outside." |
+| Dùng câu ngắn 6–10 từ xen giữa câu dài để TTS có chỗ "thở" | "That is what the record says." |
+| Tránh chuỗi 3+ câu passive liên tiếp — TTS đọc monotone hơn người thật | Xen 1 câu active/sensory giữa các câu passive |
+| Tránh từ/cụm khó phát âm, viết tắt, ký hiệu — TTS hay đọc sai | Viết "three hundred seventy-two" thay vì "372" |
+| Số liệu viết bằng CHỮ, không bằng số | "two thousand four hundred" thay vì "2,400" |
+| Tên riêng Latin/Greek phổ biến giữ nguyên, tên quá hiếm thì thêm phiên âm gần đúng trong ngoặc | "Gaius Verres" OK, "Mnesitheus" → thêm guide nếu cần |
+
+---
+
+## BẮT BUỘC: Review TTS trước khi chốt script
+
+Bản chất content này là **viết để NÓI**, không phải viết để đọc mắt. Mọi script PHẢI được review lại từ góc độ TTS **sau khi viết xong**, trước khi chạy gen_audio.
+
+### Checklist review TTS (áp dụng từng chunk)
+
+1. **Đọc thầm từng câu trong đầu bằng giọng Charon** — nếu câu nào nghe robotic, list-like, hoặc như đọc bảng → viết lại thành prose
+2. **Check cấu trúc liệt kê**: bất kỳ pattern nào dạng "A — matching, B — matching, C — not matching" hoặc bullet-point ẩn đều PHẢI chuyển thành câu văn tự nhiên
+3. **Check nhịp thở**: có câu ngắn xen giữa không? TTS không biết tự thêm pause — câu ngắn = chỗ thở duy nhất
+4. **Check 3+ câu passive liên tiếp**: TTS đọc passive monotone hơn người → xen active/sensory
+5. **Check số liệu**: tất cả phải viết bằng chữ, không bằng số
+6. **Check tên riêng khó đọc**: TTS có đọc đúng không? Nếu không chắc → thêm phiên âm hoặc đổi cách diễn đạt
+7. **Check em dash / dấu gạch ngang**: TTS thường nuốt hoặc pause sai ở em dash — nếu quá nhiều em dash liên tiếp, thay bằng comma hoặc tách câu
+8. **Check câu quá dài (100+ từ)**: TTS mất nhịp ở câu rất dài — tách thành 2-3 câu nếu nghe không natural
+
+### Anti-pattern phải bắt
+
+| Pattern | Vấn đề khi TTS đọc | Fix |
+|---------|-------------------|-----|
+| "X — matching — Y — not matching — Z — matching" | Nghe như đọc spreadsheet | Viết thành prose: "X consistent, Y consistent, nhưng Z không khớp" |
+| Liệt kê 5+ items liên tiếp không ngắt | TTS đọc thành chuỗi monotone dài | Nhóm lại, thêm câu ngắn giữa các nhóm |
+| Nhiều con số liền nhau trong 1 câu | Nghe rối, listener mất track | Tách ra nhiều câu, mỗi câu max 2 con số |
+| Parenthetical dài (30+ từ trong ngoặc) | TTS không hạ giọng cho ngoặc đơn | Tách thành câu riêng |
+| Chuỗi comma-separated items > 4 | Nghe như shopping list | Tách thành 2 câu hoặc nhóm theo logic |

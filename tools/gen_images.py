@@ -23,14 +23,18 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import logging
 import re
 import sys
 from dataclasses import dataclass, field
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
 import httpx
 import yaml
+
+log = logging.getLogger("gen_images")
 
 
 # ── Config ────────────────────────────────────────────────────────────────────
@@ -86,26 +90,75 @@ class AccountAlloc:
 
 # ── Parsing ───────────────────────────────────────────────────────────────────
 
+def _parse_header_meta(content: str) -> dict[str, str]:
+    """Extract <!-- key: value --> metadata from the header comment block."""
+    meta = {}
+    for m in re.finditer(r"<!--\s*(style-suffix|title-suffix):\s*(.+?)\s*-->", content):
+        meta[m.group(1)] = m.group(2).strip()
+    return meta
+
+
+def _parse_title_ids(content: str) -> set[str]:
+    """Extract IMG IDs marked with [TITLE] in the prompt line."""
+    ids: set[str] = set()
+    # Match both formats: `IMG-XX-YY [TITLE]: ...` and code-block with [TITLE]
+    for m in re.finditer(r"(IMG-\d{2}-\d{2})\s*\[TITLE\]", content):
+        ids.add(m.group(1))
+    return ids
+
+
 def parse_image_prompts(script_dir: Path) -> list[PromptTask]:
     """
     Parse script/image-prompts.md.
-    Matches lines like:  IMG-00-01: Classical Chinese ink wash...
-    Lines inside code fences (```) are also matched — the format uses fenced blocks.
+
+    Supports header metadata for automatic suffix appending:
+      <!-- style-suffix: classical oil painting style, 16:9 -->
+      <!-- title-suffix: bold serif title bottom center: gold #D4A017 "TEXT", drop shadow -->
+
+    Prompts marked with [TITLE] get both style-suffix AND title-suffix appended.
+    Other prompts get only style-suffix appended.
     """
     prompts_file = script_dir / "image-prompts.md"
     if not prompts_file.exists():
         raise FileNotFoundError(f"image-prompts.md not found in {script_dir}")
 
     content = prompts_file.read_text(encoding="utf-8")
+    meta = _parse_header_meta(content)
+    title_ids = _parse_title_ids(content)
 
-    # Match IMG-XX-XX: <prompt> anywhere in the file (handles fenced blocks too)
-    pattern = re.compile(r"^(IMG-\d{2}-\d{2}):\s*(.+)$", re.MULTILINE)
-    matches = pattern.findall(content)
+    style_suffix = meta.get("style-suffix", "")
+    title_suffix = meta.get("title-suffix", "")
 
-    if not matches:
+    # Support TWO formats:
+    # Format A: IMG-XX-YY: <prompt text on one line>
+    # Format B: ### IMG-XX-YY ... ```\n<prompt>\n```
+    raw: list[tuple[str, str]] = []  # (img_id, prompt_text)
+
+    for m in re.finditer(r"^(IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?:\s*(.+)$", content, re.MULTILINE):
+        raw.append((m.group(1), m.group(2).strip()))
+
+    for m in re.finditer(
+        r"^### (IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?\b.*?\n```\n(.*?)\n```",
+        content,
+        re.MULTILINE | re.DOTALL,
+    ):
+        raw.append((m.group(1), " ".join(m.group(2).split())))
+
+    if not raw:
         raise ValueError("No IMG-XX-XX prompts found in image-prompts.md")
 
-    return [PromptTask(img_id=img_id, prompt=prompt.strip()) for img_id, prompt in matches]
+    tasks = []
+    for img_id, prompt_text in raw:
+        # Build final prompt: scene + style suffix + optional title suffix
+        parts = [prompt_text]
+        if style_suffix:
+            parts.append(style_suffix)
+        if img_id in title_ids and title_suffix:
+            parts.append(title_suffix)
+        final = ", ".join(parts)
+        tasks.append(PromptTask(img_id=img_id, prompt=final))
+
+    return tasks
 
 
 def find_missing_tasks(tasks: list[PromptTask], out_dir: Path) -> list[PromptTask]:
@@ -314,7 +367,7 @@ async def process_account(
 
             async with print_lock:
                 counter[0] += 1
-                print(f"  [{counter[0]}/{total_tasks}] {task.img_id} ✓  saved: {list(saved)}")
+                print(f"  [{counter[0]}/{total_tasks}] {task.img_id} OK  saved: {list(saved)}")
 
         results = await asyncio.gather(
             *[handle_task(task) for task in alloc.tasks],
@@ -324,7 +377,7 @@ async def process_account(
         for task, result in zip(alloc.tasks, results):
             if isinstance(result, Exception):
                 async with print_lock:
-                    print(f"  {task.img_id} ✗  ERROR: {result}")
+                    print(f"  {task.img_id} FAIL  ERROR: {result}")
                 errors.append((task.img_id, str(result)))
 
     return errors
@@ -408,7 +461,7 @@ async def async_main(args: argparse.Namespace) -> None:
     total_assigned = sum(len(a.tasks) for a in allocs)
     total_cost = total_assigned * COST_PER_PROMPT
 
-    print(f"\nGreedy fill plan (ascending balance → drain smallest first):")
+    print("\nGreedy fill plan (ascending balance -> drain smallest first):")
     print(f"  {'Account':<45} {'Balance':>9}  {'Capacity':>9}  {'Assigned':>9}")
     print("  " + "-" * 78)
     for a in allocs:
@@ -417,7 +470,7 @@ async def async_main(args: argparse.Namespace) -> None:
     print(f"  Prompts assigned  : {total_assigned}/{len(tasks)}")
     print(f"  Estimated cost    : ${total_cost:.3f}")
     print(f"  Model             : Nano Banana 2 ({MODEL_ID[:8]}...)")
-    print(f"  Dimensions        : {WIDTH}×{HEIGHT}  ×{GENERATIONS_PER_MODEL} per prompt")
+    print(f"  Dimensions        : {WIDTH}x{HEIGHT}  x{GENERATIONS_PER_MODEL} per prompt")
 
     if unassigned:
         print(f"\n  WARNING: {len(unassigned)} prompt(s) could NOT be assigned (total credit exhausted):")
@@ -447,7 +500,7 @@ async def async_main(args: argparse.Namespace) -> None:
         else:
             all_errors.extend(r)
 
-    print(f"\n{'─' * 60}")
+    print(f"\n{'-' * 60}")
     print(f"Done.  Assigned={total_assigned}  Errors={len(all_errors)}  Unassigned={len(unassigned)}")
 
     if all_errors:
@@ -473,7 +526,35 @@ def main() -> None:
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing images")
     args = parser.parse_args()
 
-    asyncio.run(async_main(args))
+    # ── Setup file logging ────────────────────────────────────────────────
+    project_dir = Path(args.project).resolve()
+    log_dir = project_dir / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / f"gen_images_{datetime.now():%Y%m%d_%H%M%S}.log"
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s  %(message)s",
+        datefmt="%H:%M:%S",
+        handlers=[
+            logging.StreamHandler(sys.stdout),
+            logging.FileHandler(log_file, encoding="utf-8"),
+        ],
+    )
+    log.info(f"Log file: {log_file}")
+
+    # Redirect print() → log so everything is captured
+    _orig_print = __builtins__["print"] if isinstance(__builtins__, dict) else print
+    import builtins
+    def _log_print(*args_p, **kwargs_p):
+        msg = " ".join(str(a) for a in args_p)
+        log.info(msg)
+    builtins.print = _log_print
+
+    try:
+        asyncio.run(async_main(args))
+    finally:
+        builtins.print = _orig_print
 
 
 if __name__ == "__main__":

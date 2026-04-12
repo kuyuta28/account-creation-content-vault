@@ -1,0 +1,9 @@
+default_voice: Charon
+
+script:
+  section_files:
+    - 00-intro.md
+    - 01-inventory-process.md
+    - 02-salt-tax-disputes.md
+    - 03-discrepancies.md
+    - 04-outro.md

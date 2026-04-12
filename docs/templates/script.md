@@ -12,6 +12,8 @@ created: YYYY-MM-DD
 
 # Script Index — [WORKING TITLE]
 
+<!-- ⚠️ Script là VĂN NÓI — sẽ được TTS đọc thành lời. Viết như kể chuyện, không viết như tài liệu. -->
+
 <!--
 CHUNK REFERENCE:
   ~500 từ @ Graham speed 0.85 ≈ ~127 wpm ≈ ~3:56/chunk

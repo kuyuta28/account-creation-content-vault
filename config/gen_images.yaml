@@ -7,7 +7,7 @@ api:
 
 generation:
   model_id: c3f4bea0-4cbf-49ea-b8ea-0b9d917ebc0c  # Nano Banana 2 (Gemini 3...)
-  generations_per_model: 2                          # images per prompt
+  generations_per_model: 1                          # images per prompt
   width: 1920
   height: 1080
   cost_per_gen: 0.144                               # USD per single generation (TTI price)

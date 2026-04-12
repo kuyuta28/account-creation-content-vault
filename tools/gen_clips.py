@@ -25,6 +25,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+TAIL_SILENCE_SEC: float = 1.0  # seconds of silence appended after each clip
+
 
 # ---------------------------------------------------------------------------
 # Parsing
@@ -45,17 +47,28 @@ def parse_audio_image_map(script_dir: Path) -> list[dict]:
         raise FileNotFoundError(f"audio-image-map.md not found in {script_dir}")
 
     rows: list[dict] = []
-    row_pattern = re.compile(r"^\|\s*\d+\s*\|\s*(\S+)\s*\|\s*(\S+)\s*\|")
+    # Support multiple table formats:
+    #   3-col: | # | Audio | Image |
+    #   6-col: | Chunk | File | Title | Duration | Cumulative | Image |
+    row_pattern_3col = re.compile(r"^\|\s*\d+\s*\|\s*(\S+)\s*\|\s*(\S+)\s*\|")
+    row_pattern_6col = re.compile(
+        r"^\|\s*(audio-\d+-\d+)\s*\|"   # col 1: Chunk (audio-XX-YY)
+        r"[^|]*\|"                        # col 2: File (skip)
+        r"[^|]*\|"                        # col 3: Title (skip)
+        r"[^|]*\|"                        # col 4: Duration (skip)
+        r"[^|]*\|"                        # col 5: Cumulative (skip)
+        r"\s*(IMG-\d+-\d+)\s*\|"          # col 6: Image
+    )
 
     for line in map_file.read_text(encoding="utf-8").splitlines():
-        m = row_pattern.match(line)
+        m = row_pattern_3col.match(line) or row_pattern_6col.match(line)
         if not m:
             continue
-        audio_file = m.group(1).strip()   # "00-01.mp3" or "audio-00-01.mp3"
-        image_id   = m.group(2).strip()   # "00-01"
+        audio_file = m.group(1).strip()
+        image_id   = m.group(2).strip()
 
         # Normalise audio ID
-        audio_stem = audio_file.removesuffix(".mp3")
+        audio_stem = Path(audio_file).stem   # Strip any extension (.mp3, .wav, etc.)
         if not audio_stem.startswith("audio-"):
             audio_stem = f"audio-{audio_stem}"
 
@@ -68,7 +81,9 @@ def parse_audio_image_map(script_dir: Path) -> list[dict]:
 
 def find_image_variants(images_dir: Path, image_id: str) -> list[Path]:
     """Return sorted list of image variant files: IMG-XX-YY_1.png, IMG-XX-YY_2.png …"""
-    prefix = f"IMG-{image_id}_"
+    # image_id may already include the "IMG-" prefix (e.g. "IMG-00-01") or just the ID part (e.g. "00-01")
+    stem = image_id if image_id.startswith("IMG-") else f"IMG-{image_id}"
+    prefix = f"{stem}_"
     variants = sorted(images_dir.glob(f"{prefix}*.png"))
     return variants
 
@@ -90,16 +105,21 @@ def get_audio_duration(audio_path: Path) -> float:
     return float(data["format"]["duration"])
 
 
-def build_static_clip(audio: Path, image: Path, output: Path) -> None:
-    """Create clip: static image + audio."""
+def build_static_clip(audio: Path, image: Path, output: Path, tail_silence: float = TAIL_SILENCE_SEC) -> None:
+    """Create clip: static image + audio + tail silence."""
+    duration = get_audio_duration(audio)
+    total = duration + tail_silence
     cmd = [
         "ffmpeg", "-y",
-        "-loop", "1", "-i", str(image),
+        "-loop", "1", "-t", str(total), "-i", str(image),
         "-i", str(audio),
+        "-filter_complex", f"[1:a]apad=pad_dur={tail_silence}[a]",
+        "-map", "0:v",
+        "-map", "[a]",
         "-c:v", "libx264", "-tune", "stillimage",
         "-c:a", "aac", "-b:a", "192k",
         "-pix_fmt", "yuv420p",
-        "-shortest",
+        "-t", str(total),
         str(output),
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -108,30 +128,32 @@ def build_static_clip(audio: Path, image: Path, output: Path) -> None:
 
 
 def build_crossfade_clip(
-    audio: Path, img1: Path, img2: Path, output: Path, xfade_duration: float = 1.0
+    audio: Path, img1: Path, img2: Path, output: Path,
+    xfade_duration: float = 1.0, tail_silence: float = TAIL_SILENCE_SEC
 ) -> None:
     """
-    Create clip: img1 → crossfade → img2, with audio.
+    Create clip: img1 → crossfade → img2, with audio + tail silence.
     Crossfade starts at audio_duration/2 - xfade_duration/2.
     """
     duration = get_audio_duration(audio)
+    total = duration + tail_silence
     # Time offset where xfade starts (halfway through audio minus half xfade)
     xfade_offset = max(0.0, duration / 2 - xfade_duration / 2)
 
-    # Each image segment padded to cover the full duration
+    # Each image segment padded to cover total duration (audio + tail)
     cmd = [
         "ffmpeg", "-y",
-        "-loop", "1", "-t", str(duration), "-i", str(img1),
-        "-loop", "1", "-t", str(duration), "-i", str(img2),
+        "-loop", "1", "-t", str(total), "-i", str(img1),
+        "-loop", "1", "-t", str(total), "-i", str(img2),
         "-i", str(audio),
         "-filter_complex",
-        f"[0:v][1:v]xfade=transition=fade:duration={xfade_duration}:offset={xfade_offset}[v]",
+        f"[0:v][1:v]xfade=transition=fade:duration={xfade_duration}:offset={xfade_offset}[v];[2:a]apad=pad_dur={tail_silence}[a]",
         "-map", "[v]",
-        "-map", "2:a",
+        "-map", "[a]",
         "-c:v", "libx264", "-tune", "stillimage",
         "-c:a", "aac", "-b:a", "192k",
         "-pix_fmt", "yuv420p",
-        "-t", str(duration),
+        "-t", str(total),
         str(output),
     ]
     result = subprocess.run(cmd, capture_output=True, text=True)
@@ -148,7 +170,7 @@ def build_clip(audio_dir: Path, images_dir: Path, clips_dir: Path, row: dict) ->
     audio_id = row["audio_id"]   # "audio-00-01"
     image_id = row["image_id"]   # "00-01"
 
-    audio = audio_dir / f"{audio_id}.mp3"
+    audio = audio_dir / f"{audio_id}.wav"
     if not audio.exists():
         raise FileNotFoundError(f"Audio not found: {audio}")
 

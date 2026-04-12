@@ -52,11 +52,9 @@ tags: []
 ## Asset Requirements
 
 ### Voice (TTS)
-- Voice: [voiceId] — xem docs/inworld-voices.md
-- Provider: Inworld AI (`inworld-tts-1.5-max`)
-- Speed: [0.5–1.5]
-- Temperature: [0.7–1.2]
-- API key env: `INWORLD_API_KEY`
+- Voice: [voiceId] — xem docs/gemini-voices.md
+- Provider: Gemini (`gemini-2.5-flash-preview-tts`)
+- API key env: `GEMINI_API_KEY`
 - Gen script: `tools/gen_audio.py`
 - Ghi chú đặc biệt:
 

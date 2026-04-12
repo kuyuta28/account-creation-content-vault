@@ -1,0 +1,340 @@
+12:56:30  Log file: D:\business\account-creation\content-vault\episodes\boring-history\venice-arsenal-inventory-1490\logs\gen_images_20260412_125630.log
+12:56:30  
+Parsed 54 prompts from image-prompts.md
+12:56:30  Status  : 0 done | 1 to generate
+12:56:30  
+Registrar: http://localhost:8709
+12:56:30  Fetching valid AA accounts...
+12:56:32  HTTP Request: GET http://localhost:8709/api/v1/accounts?service=ARTIFICIALANALYSIS "HTTP/1.1 200 OK"
+12:56:32  Found 154 valid accounts. Fetching live balances...
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=kfpt1.0aeqyiyz1y%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=6bhri.1mu2vjcpz8%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=8ju6r.bh8d4g7hny%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=8ndne.n8g9kh3jb1%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=jtsjs.dffn0ji1v0%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=936ce.e419zmf0q5%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=pz2uk.1sslz1hkx5%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=qldpc.81zb5adubz%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=xl9b9.20yqiyx3an%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:39  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=zae76zsy3b%40sharebot.net "HTTP/1.1 200 OK"
+12:56:45  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=4hm71.3liv59j5l9%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:45  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=b1mwv.1ckjdemsfc%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:45  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=i5zbp.i5xjgfnpuw%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:45  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=vlshz.fuaxosiljc%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=thi2g.fyuxo3mlhl%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ytwfz.7jc2kca9wd%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=r3hkv.gl117i02y3%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=7efcb.xaracwsara%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=4h45g.af99tkihfw%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=amkby.7wlh2kfpb9%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=2v5qs.em804leoo2%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=4r2d1.8nsebzr6q9%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=sj4zn.cq0e6qwl5r%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=p19ni.rlg2wbcfgo%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=cl67g.3fwxkdx9ao%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wdvv6.kce7oewaj7%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=g6wlt.g76cuz3v9s%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=m84ka.xetakp8uzp%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=31vky.223pe2bt38%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:51  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=hwud2.adpyhiuffe%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=76j3l.hpqopt0v6z%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=vwbdj.o4atbofpp2%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=3zws4.oog852dfzs%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=dfrsr.nvj8gfrgjk%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=6d565.yuo9hybcno%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=su8n7.za8pndm7ha%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=8xbyw.xxd1tulzzs%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=bawjm.610dbf6tdz%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:56:57  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=j2m3n.stw4ebz6tp%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:01  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=apyiu.3gagcmfj88%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=e2b7g.f554kcd9ha%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wvx7k.fvsgw0aukz%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=glkxj.bcyncrppfr%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=tmv5w.uhbaywac7z%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=pi9sa.bkgq2jbtzj%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=58fef.zk5qjwumqd%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=hia9m.2zlzwrbily%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=jg6fn.omng46d8se%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=pybmh.hkv4cm0s7d%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:03  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=4nfen.wg9fh1sqmq%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=fuvu7.m8es28mkj8%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=8pzdu.swruub05uz%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wzbyr.s8tektb3tz%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=98r97.391lz8moem%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=k61fk.b1twyfgg2r%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=d2vtm.e8zuqw4f24%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=lv24u.q1f5az9659%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=iteq4.8mu8wtlwfi%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=fwwr1.fhf5mvwlkp%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:09  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=z3k5v.dbps8iqqts%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=sk1gn.y4szskeuqb%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wbtkl.99xi7540yk%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=xab97.tzs3wqa8v2%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=e3chs.7u7qmzajbo%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=swztq.ysr4w58miq%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=7pk2k.qe6mn4otju%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=4iwkp.283lkfemg5%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:15  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wj5t7.eu5udp4lbs%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:19  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=yi4cj.6hlwd3sdfy%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:19  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=568eb.sd30ki8m0g%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=swdjb.qc37aqs5vl%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ucd5r.lapjxubywx%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=eew2m.kiujlt9czh%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=kfnnj.0pxyqlv0x4%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=vfty1.yx4isy8327%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=lkake.nlvwk0rv6s%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wq88n.g2lp72i6p5%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=l1qdt.evigk4mt4l%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ml5ln.2pgkudgcrj%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:21  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=mccts.i87f0bfmq9%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:27  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=hms52.za7zbucjua%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wl9qz.nmzlz2a0ta%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=c99vt.kzxij6afzn%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=flt2s.fqvjkm9obh%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=m2cq5.5ui5x3fy4o%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=xhg9c.u0e301yk44%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=7pm74.rv55futwsx%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=hhrp5.iaeez9gwdh%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ansfh.gc2jtbqbtb%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:28  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=9zxni.9ou82wkz92%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:34  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=f8tfq.1medyr5umr%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:34  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=nf1qu.9u4ubfsq3n%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:34  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=f1gl8.2x96ip94ni%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:34  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=enxvk.qow65rdjnh%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:34  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=iq5l5.g86mhj20su%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:34  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=5n3j2.yr0goku1sk%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:34  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=mctyf.n2cqn9v3pi%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:38  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=kqc8v.8g0cezocfj%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:38  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=a5q19.cixk9vvzi2%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:38  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=an4ae.i1z2ivxooe%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=8nx3l.m59cztgcor%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=wgva3.9mrv6xtb25%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=3v342.v3k4hitir3%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=9ihgk.ko3a4o60o8%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=k5h5z.zdmiroz97h%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=mf2bq.rsvyoc243o%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=mfp9k.pp7qidk2nk%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=5wj2f.3y75uvol9x%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=a7gma.bilfdqivr2%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:40  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=2iydi.m3noxtrrg9%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:46  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=2aed5.v1176r3aev%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:46  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ks4rp.361ir2572e%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:46  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ejli6.dk109glm9v%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=c2ys5.9zb71jtprr%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=z5uyc.f6k1t3vj2t%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=x7s8u.s162mye9wx%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=dws2r.k0sr6k1qd1%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=v7cch.xjlt9po025%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=64qtg.xwunmi1byw%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:47  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=4vjiw.me96z2ojjn%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=d9d3s.rjmskrz1s5%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=9zc8s.f8cbvtbglz%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=suefb.jnhs09b7b7%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=vh4dq.wsn3xzg6hf%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=gjiue.r0xfi8urun%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=zh617.h8gt18wlec%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=i9tul.shovibg96w%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=zfm87.iw5gijnd29%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=tkzsk.fj5159tclo%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:52  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=791c6.8zuc09lsg9%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=17ana.uyrlo4pe46%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=77jm7.4n528y6xhn%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=64dz4.ry68f85com%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=pglem.hwnwx1kq6r%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=5rpar.wefxcahk31%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=cdgws.yr1hoxdeos%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=cyr2x.2zt83b0rus%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=dn9xk.745wld24m6%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=fhmyq.sg683lyd1h%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:57:58  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ishjt.kyotfexg36%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=qj3tc.z81cmvdx51%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ff3af.rjohe7nquc%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=4uj1f.i6l9d1ing5%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=57b3n.rpq6h7hxla%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=ahm1t.s6zkfvqltv%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=hgbfs.7jbcnfe576%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=9nd9t.te8erifv5n%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=3c9ij.hzat8zlkk8%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:04  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=m23zq.o7gc9uj165%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:07  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=3p4en.2l1q01dct7%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:07  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=d54de.4jt5rj8ige%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:07  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=jz9p6.pzkd1ahl63%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:07  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=syyri.p3k8epoi1l%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:07  HTTP Request: GET http://localhost:8709/api/v1/aa/session?email=hsf16.otlb24qdhu%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:07    zae76zsy3b@sharebot.net: $0.029
+12:58:07    kfpt1.0aeqyiyz1y@inbox.testmail.app: $0.117
+12:58:07    jtsjs.dffn0ji1v0@inbox.testmail.app: $0.027
+12:58:07    8ju6r.bh8d4g7hny@inbox.testmail.app: $0.022
+12:58:07    qldpc.81zb5adubz@inbox.testmail.app: $0.022
+12:58:07    8ndne.n8g9kh3jb1@inbox.testmail.app: $0.022
+12:58:07    pz2uk.1sslz1hkx5@inbox.testmail.app: $0.022
+12:58:07    936ce.e419zmf0q5@inbox.testmail.app: $0.022
+12:58:07    xl9b9.20yqiyx3an@inbox.testmail.app: $0.022
+12:58:07    6bhri.1mu2vjcpz8@inbox.testmail.app: $0.027
+12:58:07    r3hkv.gl117i02y3@inbox.testmail.app: $5.000
+12:58:07    vlshz.fuaxosiljc@inbox.testmail.app: $5.000
+12:58:07    amkby.7wlh2kfpb9@inbox.testmail.app: $5.000
+12:58:07    b1mwv.1ckjdemsfc@inbox.testmail.app: $5.000
+12:58:07    4h45g.af99tkihfw@inbox.testmail.app: $5.000
+12:58:07    ytwfz.7jc2kca9wd@inbox.testmail.app: $5.000
+12:58:07    i5zbp.i5xjgfnpuw@inbox.testmail.app: $5.000
+12:58:07    4hm71.3liv59j5l9@inbox.testmail.app: $5.000
+12:58:07    7efcb.xaracwsara@inbox.testmail.app: $5.000
+12:58:07    thi2g.fyuxo3mlhl@inbox.testmail.app: $5.000
+12:58:07    2v5qs.em804leoo2@inbox.testmail.app: $5.000
+12:58:07    cl67g.3fwxkdx9ao@inbox.testmail.app: $5.000
+12:58:07    wdvv6.kce7oewaj7@inbox.testmail.app: $5.000
+12:58:07    p19ni.rlg2wbcfgo@inbox.testmail.app: $5.000
+12:58:07    g6wlt.g76cuz3v9s@inbox.testmail.app: $5.000
+12:58:07    sj4zn.cq0e6qwl5r@inbox.testmail.app: $5.000
+12:58:07    31vky.223pe2bt38@inbox.testmail.app: $5.000
+12:58:07    m84ka.xetakp8uzp@inbox.testmail.app: $5.000
+12:58:07    hwud2.adpyhiuffe@inbox.testmail.app: $5.000
+12:58:07    4r2d1.8nsebzr6q9@inbox.testmail.app: $5.000
+12:58:07    76j3l.hpqopt0v6z@inbox.testmail.app: $5.000
+12:58:07    bawjm.610dbf6tdz@inbox.testmail.app: $5.000
+12:58:07    j2m3n.stw4ebz6tp@inbox.testmail.app: $5.000
+12:58:07    apyiu.3gagcmfj88@inbox.testmail.app: $5.000
+12:58:07    su8n7.za8pndm7ha@inbox.testmail.app: $5.000
+12:58:07    6d565.yuo9hybcno@inbox.testmail.app: $5.000
+12:58:07    vwbdj.o4atbofpp2@inbox.testmail.app: $5.000
+12:58:07    dfrsr.nvj8gfrgjk@inbox.testmail.app: $5.000
+12:58:07    8xbyw.xxd1tulzzs@inbox.testmail.app: $5.000
+12:58:07    3zws4.oog852dfzs@inbox.testmail.app: $5.000
+12:58:07    jg6fn.omng46d8se@inbox.testmail.app: $5.000
+12:58:07    e2b7g.f554kcd9ha@inbox.testmail.app: $5.000
+12:58:07    58fef.zk5qjwumqd@inbox.testmail.app: $5.000
+12:58:07    glkxj.bcyncrppfr@inbox.testmail.app: $5.000
+12:58:07    wvx7k.fvsgw0aukz@inbox.testmail.app: $5.000
+12:58:07    4nfen.wg9fh1sqmq@inbox.testmail.app: $5.000
+12:58:07    tmv5w.uhbaywac7z@inbox.testmail.app: $5.000
+12:58:07    pybmh.hkv4cm0s7d@inbox.testmail.app: $5.000
+12:58:07    pi9sa.bkgq2jbtzj@inbox.testmail.app: $5.000
+12:58:07    hia9m.2zlzwrbily@inbox.testmail.app: $5.000
+12:58:07    fuvu7.m8es28mkj8@inbox.testmail.app: $5.000
+12:58:07    wzbyr.s8tektb3tz@inbox.testmail.app: $5.000
+12:58:07    8pzdu.swruub05uz@inbox.testmail.app: $5.000
+12:58:07    fwwr1.fhf5mvwlkp@inbox.testmail.app: $5.000
+12:58:07    lv24u.q1f5az9659@inbox.testmail.app: $5.000
+12:58:07    iteq4.8mu8wtlwfi@inbox.testmail.app: $5.000
+12:58:07    z3k5v.dbps8iqqts@inbox.testmail.app: $5.000
+12:58:07    d2vtm.e8zuqw4f24@inbox.testmail.app: $5.000
+12:58:07    k61fk.b1twyfgg2r@inbox.testmail.app: $5.000
+12:58:07    98r97.391lz8moem@inbox.testmail.app: $5.000
+12:58:07    sk1gn.y4szskeuqb@inbox.testmail.app: $5.000
+12:58:07    xab97.tzs3wqa8v2@inbox.testmail.app: $5.000
+12:58:07    4iwkp.283lkfemg5@inbox.testmail.app: $5.000
+12:58:07    swztq.ysr4w58miq@inbox.testmail.app: $5.000
+12:58:07    yi4cj.6hlwd3sdfy@inbox.testmail.app: $5.000
+12:58:07    wj5t7.eu5udp4lbs@inbox.testmail.app: $5.000
+12:58:07    wbtkl.99xi7540yk@inbox.testmail.app: $5.000
+12:58:07    7pk2k.qe6mn4otju@inbox.testmail.app: $5.000
+12:58:07    568eb.sd30ki8m0g@inbox.testmail.app: $5.000
+12:58:07    e3chs.7u7qmzajbo@inbox.testmail.app: $5.000
+12:58:07    swdjb.qc37aqs5vl@inbox.testmail.app: $5.000
+12:58:07    vfty1.yx4isy8327@inbox.testmail.app: $5.000
+12:58:07    lkake.nlvwk0rv6s@inbox.testmail.app: $5.000
+12:58:07    wq88n.g2lp72i6p5@inbox.testmail.app: $5.000
+12:58:07    eew2m.kiujlt9czh@inbox.testmail.app: $5.000
+12:58:07    ml5ln.2pgkudgcrj@inbox.testmail.app: $5.000
+12:58:07    l1qdt.evigk4mt4l@inbox.testmail.app: $5.000
+12:58:07    ucd5r.lapjxubywx@inbox.testmail.app: $5.000
+12:58:07    mccts.i87f0bfmq9@inbox.testmail.app: $5.000
+12:58:07    kfnnj.0pxyqlv0x4@inbox.testmail.app: $5.000
+12:58:07    hms52.za7zbucjua@inbox.testmail.app: $5.000
+12:58:07    xhg9c.u0e301yk44@inbox.testmail.app: $5.000
+12:58:07    flt2s.fqvjkm9obh@inbox.testmail.app: $5.000
+12:58:07    ansfh.gc2jtbqbtb@inbox.testmail.app: $5.000
+12:58:07    c99vt.kzxij6afzn@inbox.testmail.app: $5.000
+12:58:07    m2cq5.5ui5x3fy4o@inbox.testmail.app: $5.000
+12:58:07    9zxni.9ou82wkz92@inbox.testmail.app: $5.000
+12:58:07    7pm74.rv55futwsx@inbox.testmail.app: $5.000
+12:58:07    wl9qz.nmzlz2a0ta@inbox.testmail.app: $5.000
+12:58:07    hhrp5.iaeez9gwdh@inbox.testmail.app: $5.000
+12:58:07    f8tfq.1medyr5umr@inbox.testmail.app: $5.000
+12:58:07    f1gl8.2x96ip94ni@inbox.testmail.app: $5.000
+12:58:07    5n3j2.yr0goku1sk@inbox.testmail.app: $5.000
+12:58:07    a5q19.cixk9vvzi2@inbox.testmail.app: $5.000
+12:58:07    iq5l5.g86mhj20su@inbox.testmail.app: $5.000
+12:58:07    mctyf.n2cqn9v3pi@inbox.testmail.app: $5.000
+12:58:07    enxvk.qow65rdjnh@inbox.testmail.app: $5.000
+12:58:07    kqc8v.8g0cezocfj@inbox.testmail.app: $5.000
+12:58:07    nf1qu.9u4ubfsq3n@inbox.testmail.app: $5.000
+12:58:07    an4ae.i1z2ivxooe@inbox.testmail.app: $5.000
+12:58:07    mf2bq.rsvyoc243o@inbox.testmail.app: $5.000
+12:58:07    mfp9k.pp7qidk2nk@inbox.testmail.app: $5.000
+12:58:07    8nx3l.m59cztgcor@inbox.testmail.app: $5.000
+12:58:07    9ihgk.ko3a4o60o8@inbox.testmail.app: $5.000
+12:58:07    3v342.v3k4hitir3@inbox.testmail.app: $5.000
+12:58:07    5wj2f.3y75uvol9x@inbox.testmail.app: $5.000
+12:58:07    wgva3.9mrv6xtb25@inbox.testmail.app: $5.000
+12:58:07    k5h5z.zdmiroz97h@inbox.testmail.app: $5.000
+12:58:07    2iydi.m3noxtrrg9@inbox.testmail.app: $5.000
+12:58:07    a7gma.bilfdqivr2@inbox.testmail.app: $5.000
+12:58:07    dws2r.k0sr6k1qd1@inbox.testmail.app: $5.000
+12:58:07    2aed5.v1176r3aev@inbox.testmail.app: $5.000
+12:58:07    64qtg.xwunmi1byw@inbox.testmail.app: $5.000
+12:58:07    v7cch.xjlt9po025@inbox.testmail.app: $5.000
+12:58:07    x7s8u.s162mye9wx@inbox.testmail.app: $5.000
+12:58:07    ejli6.dk109glm9v@inbox.testmail.app: $5.000
+12:58:07    ks4rp.361ir2572e@inbox.testmail.app: $5.000
+12:58:07    z5uyc.f6k1t3vj2t@inbox.testmail.app: $5.000
+12:58:07    c2ys5.9zb71jtprr@inbox.testmail.app: $5.000
+12:58:07    4vjiw.me96z2ojjn@inbox.testmail.app: $5.000
+12:58:07    vh4dq.wsn3xzg6hf@inbox.testmail.app: $5.000
+12:58:07    d9d3s.rjmskrz1s5@inbox.testmail.app: $5.000
+12:58:07    suefb.jnhs09b7b7@inbox.testmail.app: $5.000
+12:58:07    gjiue.r0xfi8urun@inbox.testmail.app: $5.000
+12:58:07    9zc8s.f8cbvtbglz@inbox.testmail.app: $5.000
+12:58:07    791c6.8zuc09lsg9@inbox.testmail.app: $5.000
+12:58:07    zh617.h8gt18wlec@inbox.testmail.app: $5.000
+12:58:07    zfm87.iw5gijnd29@inbox.testmail.app: $5.000
+12:58:07    tkzsk.fj5159tclo@inbox.testmail.app: $5.000
+12:58:07    i9tul.shovibg96w@inbox.testmail.app: $5.000
+12:58:07    cdgws.yr1hoxdeos@inbox.testmail.app: $5.000
+12:58:07    5rpar.wefxcahk31@inbox.testmail.app: $5.000
+12:58:07    ishjt.kyotfexg36@inbox.testmail.app: $5.000
+12:58:07    77jm7.4n528y6xhn@inbox.testmail.app: $5.000
+12:58:07    fhmyq.sg683lyd1h@inbox.testmail.app: $5.000
+12:58:07    dn9xk.745wld24m6@inbox.testmail.app: $5.000
+12:58:07    pglem.hwnwx1kq6r@inbox.testmail.app: $5.000
+12:58:07    17ana.uyrlo4pe46@inbox.testmail.app: $5.000
+12:58:07    64dz4.ry68f85com@inbox.testmail.app: $5.000
+12:58:07    cyr2x.2zt83b0rus@inbox.testmail.app: $5.000
+12:58:07    57b3n.rpq6h7hxla@inbox.testmail.app: $5.000
+12:58:07    ff3af.rjohe7nquc@inbox.testmail.app: $5.000
+12:58:07    ahm1t.s6zkfvqltv@inbox.testmail.app: $5.000
+12:58:07    m23zq.o7gc9uj165@inbox.testmail.app: $5.000
+12:58:07    3p4en.2l1q01dct7@inbox.testmail.app: $5.000
+12:58:07    qj3tc.z81cmvdx51@inbox.testmail.app: $5.000
+12:58:07    hgbfs.7jbcnfe576@inbox.testmail.app: $5.000
+12:58:07    4uj1f.i6l9d1ing5@inbox.testmail.app: $5.000
+12:58:07    3c9ij.hzat8zlkk8@inbox.testmail.app: $5.000
+12:58:07    9nd9t.te8erifv5n@inbox.testmail.app: $5.000
+12:58:07    d54de.4jt5rj8ige@inbox.testmail.app: $5.000
+12:58:07    hsf16.otlb24qdhu@inbox.testmail.app: $5.000
+12:58:07    syyri.p3k8epoi1l@inbox.testmail.app: $5.000
+12:58:07    jz9p6.pzkd1ahl63@inbox.testmail.app: $5.000
+12:58:07  
+144/154 accounts eligible (balance >= $0.144/prompt)
+12:58:07  
+Greedy fill plan (ascending balance -> drain smallest first):
+12:58:07    Account                                         Balance   Capacity   Assigned
+12:58:07    ------------------------------------------------------------------------------
+12:58:07    r3hkv.gl117i02y3@inbox.testmail.app           $   5.000         34          1
+12:58:07  
+12:58:07    Prompts assigned  : 1/1
+12:58:07    Estimated cost    : $0.144
+12:58:07    Model             : Nano Banana 2 (c3f4bea0...)
+12:58:07    Dimensions        : 1920x1080  x1 per prompt
+12:58:07  
+Generating 1 prompt(s) across 1 account(s)...
+
+12:58:40  HTTP Request: POST http://localhost:8709/api/v1/aa/generate "HTTP/1.1 200 OK"
+12:58:40    [~/1] IMG-00-01 @r3hkv.gl117i02y3  gen=d8393645... polling
+12:58:40  HTTP Request: GET http://localhost:8709/api/v1/aa/generation/d8393645-e95a-422b-99b4-5e717c0624d1?email=r3hkv.gl117i02y3%40inbox.testmail.app "HTTP/1.1 200 OK"
+12:58:43  HTTP Request: POST http://localhost:8709/api/v1/aa/image-download "HTTP/1.1 200 OK"
+12:58:43    [1/1] IMG-00-01 OK  saved: ['IMG-00-01_1.png']
+12:58:43  
+------------------------------------------------------------
+12:58:43  Done.  Assigned=1  Errors=0  Unassigned=0

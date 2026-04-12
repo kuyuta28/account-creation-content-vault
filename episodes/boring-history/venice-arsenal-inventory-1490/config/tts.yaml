@@ -1,0 +1,11 @@
+default_voice: Charon
+
+script:
+  section_files:
+    - 00-intro.md
+    - 01-cannon-hall.md
+    - 02-tana-timber.md
+    - 03-galley-sheds.md
+    - 04-oars-anchors.md
+    - 05-armoury.md
+    - 06-outro.md

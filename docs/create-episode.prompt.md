@@ -28,14 +28,14 @@ Cần xác nhận một số thông tin trước khi bắt đầu:
 
 ## Gợi ý giọng TTS (thực hiện NGAY sau khi có chủ đề — trước khi hỏi câu 9)
 
-Đọc `docs/inworld-voices.md`, sau đó gợi ý **10 giọng** phù hợp nhất với chủ đề video theo format sau:
+Đọc `docs/gemini-voices.md`, sau đó gợi ý **10 giọng** phù hợp nhất với chủ đề video theo format sau:
 
 ```
 **Gợi ý giọng TTS cho video này:**
 
 | # | voiceId | Mô tả ngắn | Lý do phù hợp |
 |---|---|---|---|
-| 1 | Graham | Authoritative British male | ... |
+| 1 | Charon | Trầm, quyền lực | ... |
 ...
 ```
 

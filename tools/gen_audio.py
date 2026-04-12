@@ -1,38 +1,42 @@
 #!/usr/bin/env python3
 """
-gen_audio.py — Generate TTS audio from script chunks using Inworld AI API.
+gen_audio.py — Generate TTS audio from script chunks via tts-proxy API.
+
+FE only: parses script, calls tts-proxy for audio, saves WAV files.
+NO Gemini API logic here — all key rotation and RPD tracking is in tts-proxy.
 
 Usage:
-    python gen_audio.py --project <path>           # generate all missing audio
+    python gen_audio.py --project <path>            # generate all missing audio
     python gen_audio.py --project <path> --dry-run  # show what would be generated
-    python gen_audio.py --project <path> --voice Graham --speed 0.85
+    python gen_audio.py --project <path> --voice Charon
     python gen_audio.py --project <path> --chunk audio-00-01  # single chunk
-    python gen_audio.py --project <path> --list    # list all chunks + status
+    python gen_audio.py --project <path> --list     # list all chunks + status
 
 Examples:
-    python gen_audio.py --project d:/business/content-vault/videos/boring-history/ming-grain-storage-1450
+    python gen_audio.py --project d:/business/account-creation/content-vault/episodes/boring-history/ming-grain-storage-1450
     python gen_audio.py --project . --dry-run
 """
 
 import argparse
-import base64
-import os
+import logging
 import re
 import sys
-import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime
 from pathlib import Path
-from threading import Lock
 
-import requests
+import httpx
 import yaml
+
+log = logging.getLogger("gen_audio")
 
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
-# Config file is at <workspace_root>/config/tts.yaml
-# Walk up from this script's location to find it
-def _find_config() -> Path:
+
+DEFAULT_PROXY_URL = "http://127.0.0.1:8700/api"
+
+
+def _find_config() -> "Path | None":
     here = Path(__file__).resolve().parent
     for candidate in [here.parent / "config" / "tts.yaml", here / "config" / "tts.yaml"]:
         if candidate.exists():
@@ -40,9 +44,9 @@ def _find_config() -> Path:
     return None
 
 
-def load_config(config_path: Path = None) -> dict:
+def load_config(config_path=None) -> dict:
     path = config_path or _find_config()
-    if path and path.exists():
+    if path and Path(path).exists():
         with open(path, encoding="utf-8") as f:
             return yaml.safe_load(f) or {}
     return {}
@@ -50,33 +54,25 @@ def load_config(config_path: Path = None) -> dict:
 
 CFG = load_config()
 
-API_URL        = CFG.get("api", {}).get("url", "https://api.inworld.ai/tts/v1/voice")
-API_KEY_ENV    = CFG.get("api", {}).get("key_env", "INWORLD_API_KEY")
-DEFAULT_MODEL  = CFG.get("model", {}).get("id", "inworld-tts-1.5-max")
-DEFAULT_VOICE  = CFG.get("voice", {}).get("id", "Graham")
-DEFAULT_SPEED  = CFG.get("voice", {}).get("speed", 0.85)
-DEFAULT_TEMP   = CFG.get("voice", {}).get("temperature", 0.9)
-DEFAULT_WORKERS= CFG.get("generation", {}).get("workers", 4)
-MAX_CHARS      = CFG.get("generation", {}).get("max_chars_per_request", 1900)
-AUDIO_ENCODING = CFG.get("output", {}).get("audio_encoding", "MP3")
-SAMPLE_RATE    = CFG.get("output", {}).get("sample_rate_hertz", 44100)
-SECTION_FILES  = CFG.get("script", {}).get("section_files", [
+DEFAULT_VOICE = CFG.get("default_voice", "Charon")
+SECTION_FILES = CFG.get("script", {}).get("section_files", [
     "00-intro.md", "01-structure.md", "02-quality.md", "03-incidents.md", "04-outro.md",
 ])
 
+AUDIO_EXT = ".wav"
 
 # ---------------------------------------------------------------------------
 # Parsing
 # ---------------------------------------------------------------------------
-def extract_chunks(script_dir: Path) -> list[dict]:
-    """
-    Parse all section files and extract chunks.
+
+def extract_chunks(script_dir: Path, section_files: list) -> list:
+    """Parse all section files and extract chunks.
     Returns list of {chunk_id, text, file} dicts.
     """
     chunks = []
     chunk_pattern = re.compile(r"^### CHUNK (audio-\d{2}-\d{2})", re.MULTILINE)
 
-    for filename in SECTION_FILES:
+    for filename in section_files:
         filepath = script_dir / filename
         if not filepath.exists():
             print(f"  [skip] {filename} not found")
@@ -87,12 +83,11 @@ def extract_chunks(script_dir: Path) -> list[dict]:
 
         for i, match in enumerate(matches):
             chunk_id = match.group(1)
-            # Text starts after the chunk header line + optional img comment
             start = match.end()
             end = matches[i + 1].start() if i + 1 < len(matches) else len(content)
             raw = content[start:end]
 
-            # Strip img comment, --- dividers, empty lines at start/end
+            # Strip img comments, --- dividers, empty lines at start/end
             text = re.sub(r"<!--.*?-->", "", raw, flags=re.DOTALL)
             text = re.sub(r"^---+\s*$", "", text, flags=re.MULTILINE)
             text = text.strip()
@@ -104,87 +99,39 @@ def extract_chunks(script_dir: Path) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# API call
+# TTS proxy call
 # ---------------------------------------------------------------------------
-def split_text(text: str, max_chars: int = MAX_CHARS) -> list[str]:
+
+def call_tts_proxy(text: str, voice: str, proxy_url: str, timeout: int = 120) -> bytes:
+    """Call tts-proxy /api/tts endpoint. Returns WAV bytes.
+
+    tts-proxy handles key rotation, RPD tracking, text splitting, and concatenation.
     """
-    Split text into parts <= max_chars, splitting at sentence boundaries ('. ').
-    Tries to keep splits clean — never mid-sentence.
-    """
-    if len(text) <= max_chars:
-        return [text]
-
-    parts = []
-    remaining = text
-
-    while len(remaining) > max_chars:
-        # Find last sentence end before max_chars
-        window = remaining[:max_chars]
-        # Try '. ' boundary (end of sentence followed by space)
-        cut = window.rfind(". ")
-        if cut == -1:
-            # Fallback: split at last space
-            cut = window.rfind(" ")
-        if cut == -1:
-            cut = max_chars  # hard cut as last resort
-
-        parts.append(remaining[: cut + 1].strip())
-        remaining = remaining[cut + 1:].strip()
-
-    if remaining:
-        parts.append(remaining)
-
-    return parts
-
-
-def synthesize(text: str, voice: str, model: str, speed: float, temperature: float, api_key: str) -> bytes:
-    """Call Inworld TTS API. Returns raw MP3 bytes."""
-    headers = {
-        "Authorization": f"Basic {api_key}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "text": text,
-        "voiceId": voice,
-        "modelId": model,
-        "audioConfig": {
-            "audioEncoding": AUDIO_ENCODING,
-            "sampleRateHertz": SAMPLE_RATE,
-            "speakingRate": speed,
-        },
-        "temperature": temperature,
-        "applyTextNormalization": "ON",
-    }
-
-    resp = requests.post(API_URL, json=payload, headers=headers, timeout=120)
-
-    if resp.status_code != 200:
-        try:
-            err = resp.json()
-        except Exception:
-            err = resp.text
-        raise RuntimeError(f"API error {resp.status_code}: {err}")
-
-    result = resp.json()
-    return base64.b64decode(result["audioContent"])
+    r = httpx.post(
+        f"{proxy_url}/tts",
+        json={"text": text, "voice_id": voice},
+        timeout=timeout,
+    )
+    if r.status_code == 503:
+        print(f"  PROXY: {r.json().get('detail', 'All keys exhausted daily quota')}")
+        sys.exit(1)
+    r.raise_for_status()
+    return r.content
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 def main():
-    parser = argparse.ArgumentParser(description="Generate TTS audio from script chunks")
+    parser = argparse.ArgumentParser(description="Generate TTS audio via tts-proxy")
     parser.add_argument("--project", required=True, help="Path to project root (contains script/ and assets/)")
-    parser.add_argument("--voice", default=DEFAULT_VOICE, help=f"Inworld voiceId (default: {DEFAULT_VOICE})")
-    parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Model ID (default: {DEFAULT_MODEL})")
-    parser.add_argument("--speed", type=float, default=DEFAULT_SPEED, help=f"Speaking rate 0.5–1.5 (default: {DEFAULT_SPEED})")
-    parser.add_argument("--temperature", type=float, default=DEFAULT_TEMP, help=f"Temperature (default: {DEFAULT_TEMP})")
+    parser.add_argument("--voice", default=DEFAULT_VOICE, help=f"Gemini voice name (default: {DEFAULT_VOICE})")
     parser.add_argument("--chunk", default=None, help="Generate only this chunk (e.g. audio-00-01)")
     parser.add_argument("--dry-run", action="store_true", help="Print what would be generated without calling API")
-    parser.add_argument("--list", action="store_true", help="List all chunks and their output status")
+    parser.add_argument("--list", action="store_true", dest="list_chunks", help="List all chunks and their output status")
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing audio files")
-    parser.add_argument("--key", default=None, help=f"Inworld API key (or set {API_KEY_ENV} env var)")
-    parser.add_argument("--workers", type=int, default=DEFAULT_WORKERS, help=f"Parallel workers (default: {DEFAULT_WORKERS})")
+    parser.add_argument("--proxy", default=DEFAULT_PROXY_URL, help=f"TTS proxy URL (default: {DEFAULT_PROXY_URL})")
     args = parser.parse_args()
 
     # Resolve paths
@@ -198,14 +145,23 @@ def main():
 
     audio_dir.mkdir(parents=True, exist_ok=True)
 
-    # API key
-    api_key = args.key or os.environ.get(API_KEY_ENV, "")
-    if not api_key and not args.dry_run and not args.list:
-        print("ERROR: No API key. Set INWORLD_API_KEY env var or pass --key")
+    # Load section_files from project-local config if available
+    local_cfg_path = project_dir / "config" / "tts.yaml"
+    active_cfg = load_config(local_cfg_path) if local_cfg_path.exists() else CFG
+    section_files = active_cfg.get("script", {}).get("section_files", SECTION_FILES)
+
+    # Check proxy health
+    try:
+        health = httpx.get(f"{args.proxy}/health", timeout=5)
+        health.raise_for_status()
+        info = health.json()
+        print(f"Proxy: {info.get('model', '?')}, keys={info.get('available_keys', '?')}, available_today={info.get('available_today', '?')}")
+    except Exception as exc:
+        print(f"ERROR: Cannot reach tts-proxy at {args.proxy}: {exc}")
         sys.exit(1)
 
     # Parse chunks
-    chunks = extract_chunks(script_dir)
+    chunks = extract_chunks(script_dir, section_files)
     if not chunks:
         print("ERROR: No chunks found in script files.")
         sys.exit(1)
@@ -218,103 +174,82 @@ def main():
             sys.exit(1)
 
     # --list mode
-    if args.list:
+    if args.list_chunks:
         print(f"\n{'#':<4} {'Chunk':<16} {'File':<22} {'Words':<7} {'Status'}")
         print("-" * 70)
         for i, c in enumerate(chunks, 1):
-            out_file = audio_dir / f"{c['chunk_id']}.mp3"
-            status = "exists" if out_file.exists() else "missing"
-            word_count = len(c["text"].split())
-            print(f"{i:<4} {c['chunk_id']:<16} {c['file']:<22} {word_count:<7} {status}")
-        print(f"\nTotal: {len(chunks)} chunks | Audio dir: {audio_dir}")
+            out = audio_dir / f"{c['chunk_id']}{AUDIO_EXT}"
+            status = "OK exists" if out.exists() else "missing"
+            words = len(c["text"].split())
+            print(f"{i:<4} {c['chunk_id']:<16} {c['file']:<22} {words:<7} {status}")
+        print(f"\nTotal: {len(chunks)} chunks")
         return
 
-    # Summary
-    missing = [c for c in chunks if not (audio_dir / f"{c['chunk_id']}.mp3").exists()]
-    to_generate = chunks if args.overwrite else missing
+    # Filter out already-generated chunks (unless --overwrite)
+    if not args.overwrite:
+        before = len(chunks)
+        chunks = [c for c in chunks if not (audio_dir / f"{c['chunk_id']}{AUDIO_EXT}").exists()]
+        skipped = before - len(chunks)
+        if skipped:
+            print(f"  [skip] {skipped} chunks already exist (use --overwrite to regenerate)")
 
-    print(f"\nProject : {project_dir}")
-    print(f"Voice   : {args.voice}  |  Model: {args.model}  |  Speed: {args.speed}  |  Temp: {args.temperature}")
-    print(f"Output  : {audio_dir}")
-    print(f"Chunks  : {len(chunks)} total | {len(missing)} missing | {len(to_generate)} to generate")
-
-    if not to_generate:
-        print("\nAll chunks already generated. Use --overwrite to regenerate.")
+    if not chunks:
+        print("All chunks already generated.")
         return
 
     if args.dry_run:
-        print("\n[DRY RUN] Would generate:")
-        for c in to_generate:
-            word_count = len(c["text"].split())
-            print(f"  {c['chunk_id']}.mp3  ({word_count} words)  <- {c['file']}")
-            # Show first 80 chars of text
-            preview = c["text"][:80].replace("\n", " ")
-            print(f"    \"{preview}...\"")
+        print(f"\nDry run -- would generate {len(chunks)} chunks:")
+        for c in chunks:
+            print(f"  {c['chunk_id']} ({len(c['text'])} chars)")
         return
 
-    # Generate
-    print()
-    errors = []
-    print_lock = Lock()
-    counter = [0]  # mutable container for nonlocal-style counter
+    # ── Setup file logging ────────────────────────────────────────────────
+    log_dir = project_dir / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_file = log_dir / f"gen_audio_{datetime.now():%Y%m%d_%H%M%S}.log"
 
-    def generate_chunk(i_chunk):
-        i, chunk = i_chunk
-        out_file = audio_dir / f"{chunk['chunk_id']}.mp3"
-        word_count = len(chunk["text"].split())
-        text = chunk["text"]
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s  %(message)s",
+        datefmt="%H:%M:%S",
+        handlers=[
+            logging.StreamHandler(sys.stdout),
+            logging.FileHandler(log_file, encoding="utf-8"),
+        ],
+    )
+    log.info(f"Log file: {log_file}")
 
+    import builtins
+    def _log_print(*args_p, **kwargs_p):
+        msg = " ".join(str(a) for a in args_p)
+        log.info(msg)
+    builtins.print = _log_print
+
+    # Generate — sequential to respect RPD limits
+    print(f"\nGenerating {len(chunks)} chunk(s) with voice={args.voice}")
+    print(f"Output: {audio_dir}\n")
+
+    success = 0
+    failed = 0
+
+    for i, c in enumerate(chunks, 1):
+        chunk_id = c["chunk_id"]
+        out_path = audio_dir / f"{chunk_id}{AUDIO_EXT}"
         try:
-            t0 = time.time()
-            parts = split_text(text)
-            split_note = f"  (split into {len(parts)} parts)" if len(parts) > 1 else ""
+            wav_bytes = call_tts_proxy(c["text"], args.voice, args.proxy)
+            out_path.write_bytes(wav_bytes)
+            success += 1
+            print(f"  [{i}/{len(chunks)}] OK {chunk_id}  ({len(wav_bytes):,} bytes)")
+        except httpx.HTTPStatusError as exc:
+            failed += 1
+            print(f"  [{i}/{len(chunks)}] FAIL {chunk_id}  HTTP {exc.response.status_code}: {exc.response.text[:200]}")
+        except Exception as exc:
+            failed += 1
+            print(f"  [{i}/{len(chunks)}] FAIL {chunk_id}  {exc}")
 
-            audio_bytes = b""
-            for part in parts:
-                audio_bytes += synthesize(
-                    text=part,
-                    voice=args.voice,
-                    model=args.model,
-                    speed=args.speed,
-                    temperature=args.temperature,
-                    api_key=api_key,
-                )
-
-            elapsed = time.time() - t0
-            out_file.write_bytes(audio_bytes)
-            size_kb = len(audio_bytes) / 1024
-            with print_lock:
-                counter[0] += 1
-                print(f"[{counter[0]}/{len(to_generate)}] {chunk['chunk_id']}  ({word_count} words){split_note}  {size_kb:.0f}KB  ({elapsed:.1f}s)")
-            return None
-        except Exception as e:
-            with print_lock:
-                counter[0] += 1
-                print(f"[{counter[0]}/{len(to_generate)}] {chunk['chunk_id']}  ERROR: {e}")
-            return (chunk["chunk_id"], str(e))
-
-    with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        futures = {executor.submit(generate_chunk, (i, chunk)): chunk
-                   for i, chunk in enumerate(to_generate, 1)}
-        for future in as_completed(futures):
-            result = future.result()
-            if result:
-                errors.append(result)
-
-    with ThreadPoolExecutor(max_workers=args.workers) as executor:
-        futures = {executor.submit(generate_chunk, (i, chunk)): chunk
-                   for i, chunk in enumerate(to_generate, 1)}
-        for future in as_completed(futures):
-            result = future.result()
-            if result:
-                errors.append(result)
-
-    # Summary
-    print(f"\nDone: {len(to_generate) - len(errors)} generated, {len(errors)} errors")
-    if errors:
-        print("\nFailed chunks:")
-        for chunk_id, msg in errors:
-            print(f"  {chunk_id}: {msg}")
+    print(f"\nDone: {success} generated, {failed} failed.")
+    if failed:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
