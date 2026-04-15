@@ -189,6 +189,125 @@ Cơ chế sleep content hoạt động: người nghe cần **trust** người n
 
 ---
 
+## Nguyên tắc cốt lõi — 8 điều BẮT BUỘC
+
+Đây là kim chỉ nam cho mọi script. Vi phạm 1 trong 8 điều này = script reject.
+
+### 1. Second-Person POV CỰC MẠNH — "You" là bắt buộc, không phải lựa chọn
+
+Không bao giờ mô tả khách quan. Luôn đưa "you" vào câu đầu tiên mỗi chunk. Bạn không "quan sát" — bạn "đang trải nghiệm".
+
+❌ **Sai:** "The register contains seven thousand nine hundred and twelve entries."
+✅ **Đúng:** *"You open the register. Seven thousand nine hundred and twelve entries. The first slip is cool against your thumb."*
+
+**Ví dụ tốt:**
+- *"You step inside. The air is cooler here."*
+- *"Your hands are ink-stained. You wipe them on your sleeve."*
+- *"You blink awake as the oil lamp flickers."*
+
+---
+
+### 2. Sensory Details DISGUSTING và CỰC KỲ CỤ THỂ — Không "bẩn", phải là "cụ thể thế nào"
+
+Không nói chung chung "bẩn", "cũ", "cổ". Mô tả **mùi**, **kết cấu**, **trọng lượng**, **âm thanh**.
+
+❌ **Sai:** "The bamboo slips are old."
+✅ **Đúng:** *"The bamboo is yellow at the edges, the grain rough against your fingertips. It smells of dry grass and the dust of sixty-seven previous corrections."*
+
+**Ví dụ tốt:**
+- *"The blanket hasn't been washed since last winter. It weighs roughly as much as a small cow from the accumulated grime."*
+- *"The floor is either wet from last night's rain, or crusty from something your neighbor's chicken did."*
+- *"Your knees sound like a bag of rocks being shaken."*
+
+---
+
+### 3. Structure Timeline Rõ Ràng — "Một ngày của bạn"
+
+Structure theo **timeline cụ thể** — ngày 1, ngày 2, phase 1, phase 2. Marker thời gian rõ ràng. Mỗi section = một giai đoạn của quá trình.
+
+**Ví dụ Han episode:**
+- Section 0: Ngày 1, bạn đến văn phòng
+- Section 1: Ngày 1-3, cross-reference
+- Section 2: Ngày 4-5, births
+- Section 3: Ngày 6-9, deaths
+- ...
+
+---
+
+### 4. Hook Chuyển Chunk Mạnh — "Và điều này mới chỉ là bắt đầu"
+
+Mỗi chunk kết thúc bằng câu dẫn sang chunk tiếp theo. Không kết bằng câu khép kín.
+
+❌ **Sai:** "Entry 211 has a discrepancy." (kết thúc)
+✅ **Đúng:** *"Entry 211 has a discrepancy. You mark it with a small dot in the margin. You will return to it later, when the village head's report arrives."*
+
+**Ví dụ tốt:**
+- *"And this is just how your day starts. It only gets worse from here."*
+- *"And you still haven't brushed your teeth, but we'll get to that next."*
+- *"You wipe the brush. The correction list awaits."*
+
+---
+
+### 5. So Sánh Modern vs Ancient Liên Tục — "No CTRL+F"
+
+Tạo contrast giữa "bureaucratic ideal" và "thực tế khắc nghiệt" — giữa những gì người hiện đại cho là hiển nhiên và những gì bạn không có.
+
+❌ **Sai:** "You check each entry."
+✅ **Đúng:** *"There is no search function, no CTRL+F. You turn each bamboo slip by hand, reading each character in the lamplight."*
+
+**Ví dụ tốt:**
+- *"No memory foam, no pillows, and definitely no Egyptian cotton sheets."*
+- *"There's no toothbrush, no toothpaste, no mouthwash, no floss."*
+- *"There's no weekend. There's no clocking out."*
+
+---
+
+### 6. Humor Đen và Understatement — Bình thản trước absurdity
+
+Không kịch tính, không phẫn nộ. Sự **bình thản** khi mô tả absurdity là điểm mạnh.
+
+❌ **Sai:** "The error is serious and needs correction."
+✅ **Đúng:** *"The red ink is bright. The error has persisted through three censuses. No one has corrected it. No one has asked why."*
+
+**Ví dụ tốt:**
+- *"Congratulations, you're alive. The bad news, so are the fleas."*
+- *"You don't slice it. You negotiate with it."*
+- *"Your mouth is a battlefield. And it's losing the war."*
+
+---
+
+### 7. Câu Ngắn Punchy Xen Kẽ Câu Dài — Rhythm cho TTS
+
+Mix câu 6-10 từ với câu 30+ từ tạo rhythm. Không để TTS đọc monotone.
+
+**Ví dụ:**
+> *"The cord is tight. You cut it with your small knife. The bamboo slips fan out on the desk, each one bearing the mark of the previous hushucao's hand, the ink faded at the edges where fingers have touched it over sixty-seven years of corrections. They are yellow at the edges. You begin."*
+
+---
+
+### 8. CẤM TẬP TRUNG VÀO GIẢI THÍCH — Chỉ Trải Nghiệm, Không Lecture
+
+**CẤM** viết đoạn thuần giải thích về "hệ thống/hoàn cảnh/luật lệ". **CẤM** phrases: "It is important to note that...", "This system was designed to...", "The reason for this is..."
+
+**CHỈ** mô tả hành động của "you" + cảm giác vật lý + chi tiết giác quan.
+
+**Công thức thay thế giải thích bằng trải nghiệm:**
+
+| Thay vì giải thích... | Hãy mô tả trải nghiệm... |
+|----------------------|------------------------|
+| "The Han registration system required..." | *"You pick up the brush. The clerk's manual says to write the name first."* |
+| "This was done to prevent fraud..." | *"You check the seal. It is the third time today the seal does not match."* |
+| "The process took fourteen days..." | *"Fourteen days. You count the bundles on the shelf. Fourteen."* |
+| "Cinnabar ink was used for..." | *"The red ink is thick. It sticks to the bamboo differently than black."* |
+
+❌ **Sai — Thuần giải thích:**
+> "A digression on the system of household registration: The Han dynasty established the hushu system in the second century BC. This was a comprehensive census mechanism designed to track population for tax purposes. The hushucao was responsible for..."
+
+✅ **Đúng — Trải nghiệm:**
+> *"You open the register. The bamboo is yellow at the edges, darker where the previous clerk's hand rested. You write the first entry. The red ink is thick. It sticks to the bamboo differently than black. You wipe the brush on the cloth. You continue."*
+
+---
+
 ## BẮT BUỘC: Review TTS trước khi chốt script
 
 Bản chất content này là **viết để NÓI**, không phải viết để đọc mắt. Mọi script PHẢI được review lại từ góc độ TTS **sau khi viết xong**, trước khi chạy gen_audio.
