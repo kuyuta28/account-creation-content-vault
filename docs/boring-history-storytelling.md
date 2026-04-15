@@ -175,13 +175,17 @@ Cơ chế sleep content hoạt động: người nghe cần **trust** người n
 
 | Quy tắc | Ví dụ |
 |---------|-------|
-| Câu mở chunk dùng hành động/cảm giác vật lý của "you" | "You step inside. The air is cooler here." |
+| Câu mở chunk dùng hành động/cảm giác vật lý của "you" — KHÔNG mở bằng abstraction | "You step inside. The air is cooler here." ✅ / "The structure of the system is as follows." ❌ |
 | Mỗi chunk có ít nhất 1 chi tiết giác quan (âm thanh, mùi, nhiệt độ, ánh sáng) | "The smell of old grain. The hum of insects outside." |
 | Dùng câu ngắn 6–10 từ xen giữa câu dài để TTS có chỗ "thở" | "That is what the record says." |
 | Tránh chuỗi 3+ câu passive liên tiếp — TTS đọc monotone hơn người thật | Xen 1 câu active/sensory giữa các câu passive |
 | Tránh từ/cụm khó phát âm, viết tắt, ký hiệu — TTS hay đọc sai | Viết "three hundred seventy-two" thay vì "372" |
 | Số liệu viết bằng CHỮ, không bằng số | "two thousand four hundred" thay vì "2,400" |
 | Tên riêng Latin/Greek phổ biến giữ nguyên, tên quá hiếm thì thêm phiên âm gần đúng trong ngoặc | "Gaius Verres" OK, "Mnesitheus" → thêm guide nếu cần |
+| **KHÔNG viết "A digression on..." hoặc "Turning now to..."** — digression phải chảy tự nhiên vào và ra khỏi mạch chính, không gắn nhãn | "The cord on this bundle reminds you..." ✅ / "A digression on the matter of cord..." ❌ |
+| **Tránh chuỗi "which is" liên tiếp** — nghe như văn bản pháp luật, không phải văn nói. Tách thành câu ngắn riêng. | "The ink is thicker. It requires a different pressure." ✅ / "The ink, which is thicker, which requires a different pressure..." ❌ |
+| **Max 2 số mỗi câu** — gom nhiều số vào 1 câu nghe rối, listener mất track. Tách ra nhiều câu. | "Nine entries remain. The largest is in Ward Four." ✅ / "Nine entries remain, with the largest in Ward Four at entry six seventeen showing a difference of four years." ❌ |
+| **KHÔNG viết chunk thuần giải thích** — digression phải đan vào hành động/cảm giác vật lý của "you", không tách riêng thành block standalone | "You grind the ink. The system dates back two hundred years. The brush feels heavier." ✅ / Cả chunk chỉ giải thích hệ thống mà không có "you" hay cảm giác vật lý ❌ |
 
 ---
 

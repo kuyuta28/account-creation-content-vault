@@ -7,16 +7,19 @@
      ↓
 [2] SCRIPT     script.md    Narration đầy đủ (VĂN NÓI, không phải văn viết) + image prompts + timing map
      ↓
-[3] TTS                     Generate audio từ script
+[3] TTS                     Generate audio từ script ✓ AUTOMATED
      ↓
-[4] IMAGE GEN               Generate ảnh theo prompts trong script.md
+[4] IMAGE GEN               Generate ảnh theo prompts ✓ AUTOMATED
      ↓
-[5] ASSEMBLE                Ghép video: audio + ảnh + music nền
+[5] ASSEMBLE                Ghép video: audio + ảnh + music nền ✓ AUTOMATED (clips)
      ↓
-[6] EXPORT                  Render final → exports/
+[6] EXPORT                  Render final → exports/ ✗ MANUAL (CapCut/PR)
      ↓
-[7] UPLOAD                  Upload YouTube + metadata
+[7] UPLOAD                  Upload YouTube + metadata ✗ MANUAL
 ```
+
+**Automated:** TTS (`gen_audio.py`), Images (`gen_images.py`), Clips (`gen_clips.py`)
+**Manual:** Music selection, Final export, Thumbnails, Upload
 
 ---
 
@@ -54,8 +57,8 @@ videos/{channel}/{topic-slug}/
   assets/
     audio/
     images/
+    thumbnails/      ← TỰ LÀM: gen qua Midjourney/DALL-E, copy ảnh vào
     music/
-  exports/
 ```
 
 ---

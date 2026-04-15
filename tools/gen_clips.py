@@ -49,8 +49,14 @@ def parse_audio_image_map(script_dir: Path) -> list[dict]:
     rows: list[dict] = []
     # Support multiple table formats:
     #   3-col: | # | Audio | Image |
+    #   4-col: | Chunk | File | Image | Duration |
     #   6-col: | Chunk | File | Title | Duration | Cumulative | Image |
     row_pattern_3col = re.compile(r"^\|\s*\d+\s*\|\s*(\S+)\s*\|\s*(\S+)\s*\|")
+    row_pattern_4col = re.compile(
+        r"^\|\s*(audio-\d+-\d+)\s*\|"   # col 1: Chunk (audio-XX-YY)
+        r"[^|]*\|"                      # col 2: File (skip)
+        r"\s*(IMG-\d+-\d+)\s*\|"        # col 3: Image
+    )
     row_pattern_6col = re.compile(
         r"^\|\s*(audio-\d+-\d+)\s*\|"   # col 1: Chunk (audio-XX-YY)
         r"[^|]*\|"                        # col 2: File (skip)
@@ -61,7 +67,7 @@ def parse_audio_image_map(script_dir: Path) -> list[dict]:
     )
 
     for line in map_file.read_text(encoding="utf-8").splitlines():
-        m = row_pattern_3col.match(line) or row_pattern_6col.match(line)
+        m = row_pattern_3col.match(line) or row_pattern_4col.match(line) or row_pattern_6col.match(line)
         if not m:
             continue
         audio_file = m.group(1).strip()
@@ -257,7 +263,7 @@ def main() -> None:
             print(f"FAILED: {e}")
             errors.append((clip_name, str(e)))
 
-    print(f"\n{'─'*60}")
+    print(f"\n{'-'*60}")
     print(f"Done.  Generated={len(pending) - len(errors)}  Errors={len(errors)}")
     if errors:
         print("\nFailed clips:")

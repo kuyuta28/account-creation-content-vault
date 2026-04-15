@@ -1,0 +1,14 @@
+# TTS config for han-registry-census-2ad
+
+script:
+  section_files:
+    - "00-intro.md"
+    - "01-the-previous-count.md"
+    - "02-births-and-additions.md"
+    - "03-deaths-and-removals.md"
+    - "04-age-discrepancies-and-errors.md"
+    - "05-the-tax-category-review.md"
+    - "06-compilation-of-the-correction-list.md"
+    - "07-outro.md"
+
+default_voice: "Charon"

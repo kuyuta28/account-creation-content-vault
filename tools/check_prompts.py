@@ -45,12 +45,17 @@ def parse_prompts(filepath: Path) -> tuple[list[dict], str | None, dict[str, str
     section_pattern = re.compile(r"^## Section \d+ — (.+)$", re.MULTILINE)
     section_starts = [(m.start(), m.group(1)) for m in section_pattern.finditer(text)]
 
-    # Support TWO formats:
+    # Support THREE formats:
     # Format A: IMG-XX-YY: <prompt text>  or  IMG-XX-YY [TITLE]: <prompt text>
     # Format B: ### IMG-XX-YY ... ```\n<prompt text>\n```
+    # Format C: ### IMG-XX-YY\n<prompt text>  (heading on its own line, prompt on next line)
     line_pattern = re.compile(r"^(IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?:\s*(.+)$", re.MULTILINE)
     block_pattern = re.compile(
         r"^### (IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?\b.*?\n```\n(.*?)\n```",
+        re.MULTILINE | re.DOTALL,
+    )
+    heading_pattern = re.compile(
+        r"^### (IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?\s*$\n(.+?)(?=\n###|\n---|\n##|\Z)",
         re.MULTILINE | re.DOTALL,
     )
 
@@ -62,6 +67,13 @@ def parse_prompts(filepath: Path) -> tuple[list[dict], str | None, dict[str, str
     for pm in block_pattern.finditer(text):
         prompt_text = " ".join(pm.group(2).split())
         matches.append((pm.start(), pm.group(1), prompt_text))
+
+    # Format C: heading on its own line, prompt text follows
+    already_matched = {pos for pos, _, _ in matches}
+    for pm in heading_pattern.finditer(text):
+        if pm.start() not in already_matched:
+            prompt_text = " ".join(pm.group(2).split())
+            matches.append((pm.start(), pm.group(1), prompt_text))
 
     for pos, img_id, prompt_text in matches:
         section = "unknown"

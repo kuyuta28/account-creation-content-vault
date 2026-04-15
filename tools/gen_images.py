@@ -129,20 +129,34 @@ def parse_image_prompts(script_dir: Path) -> list[PromptTask]:
     style_suffix = meta.get("style-suffix", "")
     title_suffix = meta.get("title-suffix", "")
 
-    # Support TWO formats:
+    # Support THREE formats:
     # Format A: IMG-XX-YY: <prompt text on one line>
     # Format B: ### IMG-XX-YY ... ```\n<prompt>\n```
-    raw: list[tuple[str, str]] = []  # (img_id, prompt_text)
+    # Format C: ### IMG-XX-YY\n<prompt text on next line>
+    matches: list[tuple[int, str, str]] = []  # (pos, img_id, prompt_text)
 
     for m in re.finditer(r"^(IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?:\s*(.+)$", content, re.MULTILINE):
-        raw.append((m.group(1), m.group(2).strip()))
+        matches.append((m.start(), m.group(1), m.group(2).strip()))
 
     for m in re.finditer(
         r"^### (IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?\b.*?\n```\n(.*?)\n```",
         content,
         re.MULTILINE | re.DOTALL,
     ):
-        raw.append((m.group(1), " ".join(m.group(2).split())))
+        matches.append((m.start(), m.group(1), " ".join(m.group(2).split())))
+
+    # Format C: heading on its own line, prompt text follows (no code block)
+    heading_pattern = re.compile(
+        r"^### (IMG-\d{2}-\d{2})(?:\s*\[TITLE\])?\s*$\n(.+?)(?=\n###|\n---|\n##|\Z)",
+        re.MULTILINE | re.DOTALL,
+    )
+    already_matched = {pos for pos, _, _ in matches}
+    for m in heading_pattern.finditer(content):
+        pos = m.start()
+        if pos not in already_matched:
+            matches.append((pos, m.group(1), " ".join(m.group(2).split())))
+
+    raw = [(img_id, prompt_text) for _, img_id, prompt_text in matches]
 
     if not raw:
         raise ValueError("No IMG-XX-XX prompts found in image-prompts.md")
@@ -344,30 +358,63 @@ async def process_account(
     async with httpx.AsyncClient() as client:
 
         async def handle_task(task: PromptTask) -> None:
-            gen_id = await _generate(client, alloc.email, task)
+            max_retries = 3
+            base_delay = 2.0
+            last_error = None
 
-            async with print_lock:
-                print(f"  [~/{total_tasks}] {task.img_id} @{alloc.email.split('@')[0]}  gen={gen_id[:8]}... polling")
+            for attempt in range(1, max_retries + 1):
+                try:
+                    gen_id = await _generate(client, alloc.email, task)
 
-            images = await _poll_until_done(client, alloc.email, gen_id)
+                    async with print_lock:
+                        print(f"  [~/{total_tasks}] {task.img_id} @{alloc.email.split('@')[0]}  gen={gen_id[:8]}... polling (attempt {attempt})")
 
-            # Download all images for this generation concurrently
-            async def download_one(img: dict) -> str:
-                if img.get("status") == "failed":
-                    raise RuntimeError(
-                        f"Image failed on server: {img.get('errorMessage', 'unknown')}"
-                    )
-                idx = img.get("generationIndex", images.index(img)) + 1
-                filename_hint = f"{task.img_id}_{idx}"
-                out_path = out_dir / f"{filename_hint}.png"
-                await _download_image(client, alloc.email, img["id"], filename_hint, out_path)
-                return out_path.name
+                    images = await _poll_until_done(client, alloc.email, gen_id)
 
-            saved = await asyncio.gather(*[download_one(img) for img in images])
+                    # Download all images for this generation concurrently
+                    async def download_one(img: dict) -> str:
+                        if img.get("status") == "failed":
+                            raise RuntimeError(
+                                f"Image failed on server: {img.get('errorMessage', 'unknown')}"
+                            )
+                        idx = img.get("generationIndex", images.index(img)) + 1
+                        filename_hint = f"{task.img_id}_{idx}"
+                        out_path = out_dir / f"{filename_hint}.png"
+                        await _download_image(client, alloc.email, img["id"], filename_hint, out_path)
+                        return out_path.name
 
-            async with print_lock:
-                counter[0] += 1
-                print(f"  [{counter[0]}/{total_tasks}] {task.img_id} OK  saved: {list(saved)}")
+                    saved = await asyncio.gather(*[download_one(img) for img in images])
+
+                    async with print_lock:
+                        counter[0] += 1
+                        print(f"  [{counter[0]}/{total_tasks}] {task.img_id} OK  saved: {list(saved)}")
+                    return  # Success, exit retry loop
+
+                except httpx.HTTPStatusError as exc:
+                    status = exc.response.status_code
+                    is_retryable = status in (502, 503, 504, 429) or (500 <= status < 600)
+                    last_error = f"HTTP {status}: {exc.response.text[:100]}"
+
+                    if is_retryable and attempt < max_retries:
+                        delay = base_delay * (2 ** (attempt - 1))  # exponential backoff: 2s, 4s, 8s
+                        async with print_lock:
+                            print(f"    {task.img_id} attempt {attempt} failed ({status}), retrying in {delay:.1f}s...")
+                        await asyncio.sleep(delay)
+                        continue
+                    else:
+                        raise  # Non-retryable or out of retries
+
+                except Exception:
+                    last_error = str(Exception())
+                    if attempt < max_retries:
+                        delay = base_delay * (2 ** (attempt - 1))
+                        async with print_lock:
+                            print(f"    {task.img_id} attempt {attempt} failed, retrying in {delay:.1f}s...")
+                        await asyncio.sleep(delay)
+                        continue
+                    raise
+
+            raise RuntimeError(f"Max retries ({max_retries}) exceeded: {last_error}")
 
         results = await asyncio.gather(
             *[handle_task(task) for task in alloc.tasks],
