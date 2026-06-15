@@ -383,7 +383,7 @@ async def process_images_for_account(
                         f"{base_url}/api/v1/aa/generate",
                         json={
                             "email": alloc.email,
-                            "prompt": task.prompt,
+                            "prompt": task.prompt[:300],  # AA API max 300 chars
                             "model_ids": [model_id],
                             "generations_per_model": 1,
                             "width": 1920,

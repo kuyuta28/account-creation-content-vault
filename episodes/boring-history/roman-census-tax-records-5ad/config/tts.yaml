@@ -1,0 +1,12 @@
+script:
+  section_files:
+    - 00-intro.md
+    - 01-declarations.md
+    - 02-cross-reference.md
+    - 03-discrepancies.md
+    - 04-outro.md
+
+tts:
+  voice: onyx
+  speed: 0.95
+  provider: gemini

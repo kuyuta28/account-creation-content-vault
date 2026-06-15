@@ -23,6 +23,15 @@ episodes/**/exports/
 *.psd
 *.ai
 
+# Backup / temp files
+*.bak
+*.tmp
+*.orig
+# Note: there is a pre-existing tracked .bak file (image-prompts.md.bak in
+# venice-arsenal-inventory-1490). It was committed before this rule existed;
+# git's `!` exception syntax is brittle across platforms, so we leave that
+# one file tracked and rely on tool authors not to introduce more .bak files.
+
 # ===== OS =====
 .DS_Store
 Thumbs.db

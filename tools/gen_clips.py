@@ -57,6 +57,11 @@ def parse_audio_image_map(script_dir: Path) -> list[dict]:
         r"[^|]*\|"                      # col 2: File (skip)
         r"\s*(IMG-\d+-\d+)\s*\|"        # col 3: Image
     )
+    # 4-col variant: | Chunk | Image | Timing | Content | (image is col 2)
+    row_pattern_4col_v2 = re.compile(
+        r"^\|\s*(audio-\d+-\d+)\s*\|"  # col 1: Chunk (audio-XX-YY)
+        r"\s*(IMG-\d+-\d+)\s*\|"        # col 2: Image
+    )
     row_pattern_6col = re.compile(
         r"^\|\s*(audio-\d+-\d+)\s*\|"   # col 1: Chunk (audio-XX-YY)
         r"[^|]*\|"                        # col 2: File (skip)
@@ -67,7 +72,8 @@ def parse_audio_image_map(script_dir: Path) -> list[dict]:
     )
 
     for line in map_file.read_text(encoding="utf-8").splitlines():
-        m = row_pattern_3col.match(line) or row_pattern_4col.match(line) or row_pattern_6col.match(line)
+        m = (row_pattern_3col.match(line) or row_pattern_4col.match(line)
+             or row_pattern_4col_v2.match(line) or row_pattern_6col.match(line))
         if not m:
             continue
         audio_file = m.group(1).strip()

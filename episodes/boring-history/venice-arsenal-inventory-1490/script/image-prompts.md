@@ -1,4 +1,4 @@
-﻿# Image Prompts — Venice Arsenale Inventory, 1490
+# Image Prompts — Venice Arsenale Inventory, 1490
 
 <!-- style-suffix: classical oil painting style, cinematic, 16:9 -->
 <!-- visual-anchor: classical oil painting style -->

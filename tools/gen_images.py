@@ -286,7 +286,7 @@ async def _generate(client: httpx.AsyncClient, email: str, task: PromptTask) -> 
     """POST /aa/generate → generationId string."""
     data = await _post_json(client, f"{BASE_URL}/api/v1/aa/generate", {
         "email": email,
-        "prompt": task.prompt,
+        "prompt": task.prompt[:300],  # AA API max 300 chars
         "model_ids": [MODEL_ID],
         "generations_per_model": GENERATIONS_PER_MODEL,
         "width": WIDTH,
